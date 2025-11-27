@@ -60,28 +60,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     /* =========================================
-       3. Password Protection (パスワードロック)
+       3. Password Protection (パスワードロック & リダイレクト)
        ========================================= */
     const lockScreen = document.getElementById('lockScreen');
     const passwordInput = document.getElementById('passwordInput');
     const unlockBtn = document.getElementById('unlockBtn');
     const errorMsg = document.getElementById('errorMsg');
 
-    // ★ここでパスワードを設定します
+    // ★パスワード設定
     const CORRECT_PASSWORD = "stf02055"; 
 
-    // ロック解除の処理
+    // 現在のページが index.html かどうかを判定
+    const isIndexPage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+
+    // 認証済みかどうかのチェック
+    const isUnlocked = sessionStorage.getItem('isUnlocked') === 'true';
+
+    // ▼▼ リダイレクト処理 ▼▼
+    // 「認証されておらず」かつ「indexページではない」場合
+    if (!isUnlocked && !isIndexPage) {
+        // index.html に強制転送
+        window.location.href = 'index.html';
+    }
+    // ▲▲ ここまで ▲▲
+
+    // ロック解除の処理（index.html用）
     const checkPassword = () => {
         if (passwordInput.value === CORRECT_PASSWORD) {
-            // パスワード正解
             lockScreen.classList.add('is-unlocked');
-            // セッションストレージに保存（ブラウザを閉じるまでロック解除状態を維持）
             sessionStorage.setItem('isUnlocked', 'true');
         } else {
-            // パスワード不正解
             errorMsg.textContent = "Password is incorrect.";
             passwordInput.value = "";
-            // 入力欄を揺らすアニメーション（おまけ）
             passwordInput.animate([
                 { transform: 'translateX(0)' },
                 { transform: 'translateX(-5px)' },
@@ -91,15 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // ロック画面の制御（index.htmlにロック画面がある場合のみ実行）
     if (lockScreen) {
-        // すでに解除済みかチェック（ページ遷移してもロックされないようにする）
-        if (sessionStorage.getItem('isUnlocked') === 'true') {
-            lockScreen.classList.add('is-unlocked'); // 最初から隠す
+        if (isUnlocked) {
+            lockScreen.classList.add('is-unlocked'); // すでに認証済みなら隠す
         } else {
-            // ボタンクリックで判定
             unlockBtn.addEventListener('click', checkPassword);
-
-            // Enterキーでも判定
             passwordInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                     checkPassword();
@@ -236,6 +243,62 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxImg.addEventListener('touchend', () => {
             isDragging = false;
             if (scale < 1) { scale = 1; updateTransform(); } // 戻り防止
+        });
+    }
+
+    /* =========================================
+       5. Smart Navbar (Scroll Detection)
+       ========================================= */
+    const navbar = document.getElementById('mainNav');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        // 一番上にいる時は常に表示
+        if (currentScrollY <= 0) {
+            navbar.classList.remove('nav-hidden');
+            return;
+        }
+
+        // 下にスクロール かつ 一定以上スクロールしたら隠す
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            navbar.classList.add('nav-hidden');
+        } 
+        // 上にスクロールしたら出す
+        else if (currentScrollY < lastScrollY) {
+            navbar.classList.remove('nav-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+    });
+
+    /* =========================================
+       6. Mobile Menu Toggle (Prevent Jump)
+       ========================================= */
+    const workLink = document.querySelector('.has-dropdown > a');
+    const dropdownParent = document.querySelector('.has-dropdown');
+
+    if (workLink && dropdownParent) {
+        workLink.addEventListener('click', (e) => {
+            // 画面幅が600px以下（スマホ）の場合のみ実行
+            if (window.innerWidth <= 600) {
+                // 1. 本来のリンク移動（index.htmlへの遷移）をキャンセル
+                e.preventDefault();
+
+                // 2. クラスを付け外ししてメニューを開閉
+                dropdownParent.classList.toggle('menu-open');
+            }
+        });
+
+        // メニュー以外の場所をタップしたら閉じる（UX向上）
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 600) {
+                // タップした場所がメニューの中でなければ閉じる
+                if (!dropdownParent.contains(e.target)) {
+                    dropdownParent.classList.remove('menu-open');
+                }
+            }
         });
     }
 

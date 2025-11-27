@@ -2,46 +2,72 @@
    Ambient Background (Top Page Design)
    ========================================= */
 
-/* 背景コンテナ（画面全体に固定） */
+/* 背景コンテナ */
 .ambient-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: -1; /* コンテンツの一番後ろに配置 */
+    z-index: 0; /* -1から0に変更（bodyの背景より前に出す） */
     overflow: hidden;
-    background-color: var(--bg-color); /* ベース色 */
+    background-color: var(--bg-color);
+}
+
+/* ★重要：コンテンツを背景より手前に出す設定 */
+/* これがないとリンクなどが押せなくなります */
+.container {
+    position: relative;
+    z-index: 1;
 }
 
 /* 浮遊する光の球 (共通) */
 .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(100px); /* 強くぼかす */
-    opacity: 0.4; /* ほんのり光らせる */
+    filter: blur(80px); /* スマホ負荷軽減のため少しぼかしを弱める */
+    opacity: 0.4;
     animation: floatOrb 20s infinite ease-in-out;
 }
 
-/* 光の球 1 (アクセントカラー：ライム) */
+/* 光の球 1 (ライム) */
 .orb-1 {
     width: 60vw;
     height: 60vw;
     background: radial-gradient(circle, var(--accent-color), transparent 70%);
-    top: -20%;
+    top: -10%; /* 位置を少し下げる */
     left: -10%;
     animation-delay: 0s;
 }
 
-/* 光の球 2 (補色：青紫系で深みを出す) */
+/* 光の球 2 (紫) */
 .orb-2 {
     width: 50vw;
     height: 50vw;
     background: radial-gradient(circle, #4A00E0, transparent 70%);
-    bottom: -10%;
+    bottom: -5%; /* 位置を少し上げる */
     right: -10%;
-    animation-delay: -10s; /* 動きをずらす */
+    animation-delay: -10s;
     opacity: 0.3;
+}
+
+/* --- スマホ向けの調整（今回追加） --- */
+@media (max-width: 768px) {
+    .orb-1 {
+        width: 80vw; /* サイズを大きく */
+        height: 80vw;
+        top: -10%;   /* 画面内に入るように調整 */
+        left: -20%;
+        opacity: 0.5; /* 少し濃くして視認性を上げる */
+    }
+
+    .orb-2 {
+        width: 90vw; /* サイズを大きく */
+        height: 90vw;
+        bottom: -10%;
+        right: -30%;
+        opacity: 0.4;
+    }
 }
 
 /* ふわふわ動くアニメーション */
@@ -51,14 +77,15 @@
     66% { transform: translate(-20px, 20px) scale(0.9); }
 }
 
-/* ノイズテクスチャ（フィルムのようなザラつき） */
+/* ノイズテクスチャ */
 .noise-overlay {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    opacity: 0.4; /* 薄く重ねる */
+    opacity: 0.4;
     pointer-events: none;
+    z-index: 1; /* オーブより手前にノイズを乗せる */
 }
 
 /* =========================================

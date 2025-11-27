@@ -8,7 +8,6 @@
     align-items: center;
     justify-content: space-between;
     gap: 60px;
-    margin-bottom: 100px;
     padding-top: 20px;
 }
 
@@ -231,7 +230,11 @@
     margin-bottom: 5px;
 }
 
-.row-icon td { text-align: center; vertical-align: middle; font-size: 1.2rem; }
+.row-icon td { 
+    text-align: center; 
+    vertical-align: middle; 
+    font-size: 1.2rem; 
+}
 
 .icon-circle {
     color: var(--accent-color);
@@ -263,7 +266,10 @@
 @media (max-width: 768px) {
     .about-hero { flex-direction: column-reverse; text-align: left; }
     .about-image-container { margin-bottom: 30px; width: 100%; }
-    .profile-placeholder { width: 200px; height: 200px; }
+    .profile-placeholder { 
+        width: 75%; 
+        height: auto; 
+    }
     .about-text h1 { font-size: 2.5rem; }
     
     .scroll-content { height: 300px; }

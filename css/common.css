@@ -79,13 +79,38 @@ h3 {
     padding: 0 20px;
 }
 
-/* --- Navigation (Header) --- */
+/* =========================================
+   Smart Navigation & Dropdown
+   ========================================= */
+
+/* 固定ヘッダーの分だけコンテンツを下げる */
+body {
+    padding-top: 150px; /* Navbarの高さ分 */
+}
+
 .navbar {
+    position: fixed; /* 固定表示 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* 最前面 */
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 0;
-    margin-bottom: 60px;
+    
+    /* デザイン調整（少し高さを減らしてスタイリッシュに） */
+    padding: 5px 40px; 
+    background-color: rgba(18, 18, 18, 0.9); /* 半透明の黒 */
+    backdrop-filter: blur(10px); /* すりガラス効果 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    
+    transition: transform 0.3s ease; /* 出し入れのアニメーション */
+}
+
+/* 隠す時のクラス（JSで付与） */
+.navbar.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .logo {
@@ -94,23 +119,137 @@ h3 {
     letter-spacing: -0.05em;
 }
 
+/* =========================================
+   Navigation Links Hover Effect
+   ========================================= */
+
 .nav-links {
     display: flex;
     list-style: none;
     gap: 30px;
+    align-items: center;
 }
 
-.nav-links a {
+/* ナビゲーション直下のリンク（Work, About） */
+.nav-links > li > a {
     font-weight: bold;
     color: var(--text-muted);
     transition: color 0.3s;
+    position: relative; /* 線を配置する基準 */
+    padding: 10px 0;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.nav-links a:hover, .nav-links a.active {
+/* ホバー時とアクティブ（現在のページ）時の文字色 */
+.nav-links > li > a:hover {
     color: var(--text-main);
-    text-decoration: underline;
-    text-decoration-color: var(--accent-color);
-    text-underline-offset: 6px;
+}
+
+/* --- 下線アニメーションの設定 --- */
+.nav-links > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 5px; /* 文字の少し下に配置 */
+    left: 0;
+    
+    /* 初期状態：幅0で隠しておく */
+    width: 0%;
+    height: 2px;
+    
+    /* ページごとのテーマカラーを適用 */
+    background-color: var(--accent-color);
+    
+    /* アニメーションの速度と動き */
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ホバー時とアクティブ時に線を100%に伸ばす */
+.nav-links > li > a:hover::after {
+    width: 100%;
+}
+
+/* --- Dropdown Menu Styles --- */
+.has-dropdown {
+    position: relative; /* ドロップダウンの基準位置 */
+    height: 100%;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* 親の下に配置 */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* 中央寄せ & 少し下に配置 */
+    
+    background-color: var(--card-bg);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 10px;
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    
+    /* アニメーション初期状態（隠す） */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Workにホバーした時に表示 */
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ドロップダウン内のリンク */
+.dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #ccc;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--accent-color); /* ページごとのアクセントカラーで光る */
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .navbar { padding: 0px 20px; }
+    /* スマホではドロップダウンを常時表示にするか、タップで開くなどの調整が必要ですが、
+       今回は簡易的にホバー（タップ）で出るようにしておきます */
+    .dropdown-menu { left: auto; right: 0; transform: translateY(10px); }
+    .has-dropdown:hover .dropdown-menu { transform: translateY(0); }
+}
+
+/* =========================================
+   Mobile Dropdown Logic (Add to common.css)
+   ========================================= */
+
+/* JSでクラスが付与されたら強制的に表示する設定 */
+.has-dropdown.menu-open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* スマホ表示時のドロップダウン位置調整（以前の記述を強化） */
+@media (max-width: 600px) {
+    .dropdown-menu {
+        /* スマホでは中央寄せではなく、左揃えや画面幅に合わせると見やすい */
+        min-width: 200px;
+        left: 0;
+        transform: translateY(10px);
+    }
+    
+    /* スマホで開いた時の位置（JS制御用） */
+    .has-dropdown.menu-open .dropdown-menu {
+        transform: translateY(0);
+    }
 }
 
 /* --- Footer --- */
@@ -341,6 +480,10 @@ footer p {
     transition: transform 0.3s ease;
 }
 
+.nav-btn.next .sub-label {
+    text-align: right;
+    }
+
 .nav-btn:hover {
     border-color: var(--accent-color);
     background: #252525;
@@ -354,26 +497,29 @@ footer p {
     transform: translateX(5px); 
 }
 
+@media (max-width: 768px) {
+    .arrow {
+    margin: 0 0;
+    }
+}
+
+/* =========================================
+   SP Layout Adjustments (Common)
+   ========================================= */
+
 /* 画面幅が600px以下（スマホ）の場合の調整 */
 @media (max-width: 600px) {
     
     /* --- Navigation Button Adjustments --- */
     .project-navigation { 
-        flex-direction: column; /* ボタンを縦積みにする */
-        gap: 16px; /* 上下のボタンの間隔を少し広げる */
+        flex-direction: column; 
+        gap: 16px; 
     }
     
     .nav-btn { 
-        width: 100%; /* 幅を画面いっぱいに */
-        /* 以前あった justify-content: center !important; を削除 */
-        /* 以前あった text-align: center !important; を削除 */
+        width: 100%; 
     }
 
-    .arrow {
-    margin: 0 0;
-    }
-
-    /* スマホでも左右の配置を明示的に指定（PC版の設定を引き継ぎ・強化） */
     .nav-btn.prev { 
         justify-content: flex-start; 
         text-align: left; 
@@ -384,7 +530,43 @@ footer p {
         text-align: right; 
     }
 
-    /* --- Other SP Adjustments (既存の記述があれば残す) --- */
+    /* --- Mobile Dropdown Fix (ここが重要な変更点) --- */
+    
+    /* 1. 親要素の基準点(relative)を解除 */
+    /* これにより、ドロップダウンは画面全体(navbar)を基準に配置されます */
+    .has-dropdown {
+        position: static; 
+    }
+
+    /* 2. ドロップダウンを画面幅に合わせて配置 */
+    .dropdown-menu {
+        /* 幅の制御 */
+        min-width: unset; /* PC用の最小幅を解除 */
+        width: auto;      /* 自動調整 */
+        
+        /* 位置の指定（画面の端から10px空ける） */
+        left: 10px;
+        right: 10px;
+        top: 90%; /* ナビバーのすぐ下 */
+        
+        /* 変形(transform)をリセット */
+        transform: none !important; 
+        
+        /* デザイン調整 */
+        border-radius: 16px;
+        text-align: center; /* テキストを中央揃えに */
+
+        /* ▼▼▼ ここを追加：最前面に表示する設定 ▼▼▼ */
+        z-index: 1001; /* ナビバー(1000)より大きな値を指定 */
+        /* ▲▲▲ 追加ここまで ▲▲▲ */
+    }
+    
+    /* 開いた時の位置調整（リセット） */
+    .has-dropdown.menu-open .dropdown-menu {
+        transform: none !important;
+    }
+
+    /* --- Other SP Adjustments --- */
     .back-to-top {
         bottom: 20px;
         right: 20px;
@@ -975,8 +1157,8 @@ footer p {
     
     /* 中身のコンテンツを中央（元のコンテナ幅）に寄せる計算 */
     /* "max(20px, ...)" は、スマホでは20px余白、PCでは中央寄せにする設定です */
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 120px;
+    padding-bottom: 120px;
     padding-left: max(20px, calc(50vw - 500px)); 
     padding-right: max(20px, calc(50vw - 500px));
 
@@ -1013,6 +1195,7 @@ footer p {
     text-align: center;
     border-left: none;
     margin-bottom: 50px;
+    padding-left: 0px;
 }
 
 /* タイトルの下に短いアクセントラインを引く */
@@ -1079,6 +1262,12 @@ footer p {
     max-height: 420px;
     display: block;
     object-fit: contain; /* 画像全体を表示（トリミングしない） */
+}
+
+@media (max-width: 768px) {
+    .image-container img {
+        max-height: 76vw;
+    }
 }
 
 /* 見出しとキャプション */
@@ -1232,6 +1421,38 @@ footer p {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
 }
+
+/* ▼▼▼ ここから追加：スマホ用の調整 ▼▼▼ */
+@media (max-width: 768px) {
+    /* スマホでは「拡大アイコン」を常時表示する */
+    .image-container.js-zoomable .zoom-hint {
+        opacity: 1;           /* 常に表示 */
+        
+        /* 位置を「中央」から「右下」に変更 */
+        top: auto;
+        left: auto;
+        bottom: 10px;
+        right: 10px;
+        transform: none;      /* 中央寄せの変形を解除 */
+        
+        /* スマホ向けに少し小さく、控えめに */
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.7); /* 背景を少し濃くして視認性アップ */
+    }
+
+    /* アイコンの中身（SVG）も少し小さく調整 */
+    .image-container.js-zoomable .zoom-hint svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .image-container.js-zoomable:hover .zoom-hint {
+    opacity: 0;
+    transform: translate(0%, 0%) scale(1);
+}
+}
+/* ▲▲▲ 追加ここまで ▲▲▲ */
 
 /* --- ライトボックス（モーダル）本体 --- */
 .lightbox {
