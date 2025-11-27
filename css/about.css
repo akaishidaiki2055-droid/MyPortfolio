@@ -20,10 +20,6 @@
     letter-spacing: -0.02em;
 }
 
-.about-text h1 span{
-    word-break: normal !important;
-}
-
 .intro-lead {
     font-size: 1.4rem;
     font-weight: bold;
