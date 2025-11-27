@@ -130,9 +130,14 @@
 
 .home-hero p {
     font-size: 1.2rem;
-    color: var(--text-main);
+    color: var(--text-muted);
     max-width: 75%;
     line-height: 1.8;
+}
+@media (max-width: 768px) {
+    .home-hero p {
+    max-width: 100%;
+    }
 }
 
 /* --- Work Grid --- */
