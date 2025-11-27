@@ -1,0 +1,263 @@
+/* =========================================
+   About Page Styles
+   ========================================= */
+
+/* --- About Hero --- */
+.about-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 100px;
+    padding-top: 20px;
+}
+
+.about-text { flex: 1; }
+
+.about-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.intro-lead {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.intro-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.about-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-placeholder {
+    width: 300px;
+    height: 300px;
+    background: #2a2a2a;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    overflow: hidden;
+}
+
+.profile-img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- Skill Tags --- */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.skill-tags span {
+    background: rgba(255,255,255,0.1);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+/* --- Experience Timeline --- */
+.experience-section { margin-bottom: 100px; }
+
+.timeline {
+    border-left: 2px solid #333;
+    padding-left: 40px;
+    margin-left: 10px;
+}
+
+.timeline-item { position: relative; margin-bottom: 50px; }
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -49px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: var(--bg-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+}
+
+.timeline-item .date {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.timeline-item h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.timeline-item p { color: var(--text-muted); max-width: 600px; }
+
+/* --- Contact Section --- */
+.contact-section {
+    text-align: center;
+    background: var(--card-bg);
+    padding: 80px 20px;
+    border-radius: var(--radius);
+    margin-bottom: 80px;
+}
+
+.contact-section h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.contact-section p { color: var(--text-muted); margin-bottom: 40px; }
+
+.contact-btn-large {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #000;
+    font-weight: bold;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.contact-btn-large:hover {
+    transform: scale(1.05);
+    background: #fff; /* ホバー時は白く */
+}
+
+/* --- Skill Matrix Table --- */
+.skill-summary-section { margin: 80px 0; }
+
+.table-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid #333;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) #333;
+}
+
+.table-scroll-wrapper::-webkit-scrollbar { height: 8px; }
+.table-scroll-wrapper::-webkit-scrollbar-track { background: #333; border-radius: 0 0 24px 24px; }
+.table-scroll-wrapper::-webkit-scrollbar-thumb { background-color: var(--accent-color); border-radius: 10px; }
+
+.skill-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1800px;
+    table-layout: fixed;
+}
+
+.skill-table th, .skill-table td {
+    padding: 16px;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+    vertical-align: top;
+    font-size: 0.95rem;
+    box-sizing: border-box; 
+}
+
+.skill-table td { width: 260px; min-width: 200px; }
+.skill-table td:last-child { border-right: none; }
+
+.skill-table th.sticky-col {
+    position: sticky; left: 0;
+    background: #252525;
+    z-index: 2;
+    color: var(--accent-color);
+    font-weight: bold;
+    border-right: 2px solid #444;
+    width: 130px; min-width: 130px;
+    vertical-align: middle;
+}
+
+.row-header td, .row-skill td {
+    font-weight: bold;
+    color: var(--text-main);
+    background: rgba(255,255,255,0.05);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.row-content td { padding: 10px; height: auto; vertical-align: top; }
+
+.scroll-content {
+    height: 430px;
+    overflow-y: auto;
+    padding-right: 5px;
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+.scroll-content ul, .scroll-content ol { padding-left: 20px; margin: 0; margin-bottom: 15px; }
+.scroll-content li { margin-bottom: 4px; }
+
+.scroll-content::-webkit-scrollbar { width: 6px; }
+.scroll-content::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
+.scroll-content::-webkit-scrollbar-thumb { background-color: #555; border-radius: 4px; }
+.scroll-content::-webkit-scrollbar-thumb:hover { background-color: var(--accent-color); }
+
+.scroll-content .subheading {
+    display: inline-block;
+    color: #ccc;
+    background-color: #333;
+    border: 1px solid #444;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.row-icon td { text-align: center; vertical-align: middle; font-size: 1.2rem; }
+
+.icon-circle {
+    color: var(--accent-color);
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-miterlimit: 10;
+    stroke-width: 3px;
+    width: 30px; height: 30px;
+    vertical-align: middle;
+}
+
+.icon-dash {
+    color: #555;
+    fill: none;
+    stroke: #555;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-width: 3px;
+    width: 20px; height: 20px;
+    vertical-align: middle;
+}
+
+.row-rank td {
+    text-align: center; vertical-align: middle; font-weight: bold;
+    font-family: monospace; color: var(--text-muted);
+}
+.row-rank th, .row-rank td { border-bottom: none; }
+
+@media (max-width: 768px) {
+    .about-hero { flex-direction: column-reverse; text-align: left; }
+    .about-image-container { margin-bottom: 30px; width: 100%; }
+    .profile-placeholder { width: 200px; height: 200px; }
+    .about-text h1 { font-size: 2.5rem; }
+    
+    .scroll-content { height: 300px; }
+    .skill-table th.sticky-col {
+        width: 80px; min-width: 80px;
+        font-size: 0.75rem; padding: 12px 12px;
+        overflow-wrap: break-word; word-wrap: break-word;
+    }
+}

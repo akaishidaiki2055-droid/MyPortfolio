@@ -1,0 +1,351 @@
+/* =========================================
+   Project-2 Specific Styles
+   ========================================= */
+
+:root {
+    /* Project-2 Accent: Coral Pink */
+    --accent-color: #FF8787;
+    /* Insight Box用の薄い背景色（コーラル用） */
+    --bg-faint: rgba(255, 135, 135, 0.1);
+}
+
+/* 上書き */
+.insight-box {
+    background: var(--bg-faint);
+}
+
+.meta-text {
+    font-size: 0.9rem;
+    color: #888;
+    display: block;
+    margin-top: 8px;
+}
+
+/* --- Process Step List --- */
+.step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.step-item {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--radius);
+    border-left: 4px solid #444;
+}
+
+.step-label {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.step-item h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.step-item p { color: #ccc; font-size: 0.95rem; }
+
+/* --- Persona Grid (Cards) --- */
+.persona-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(372px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.persona-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-top: 4px solid var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.persona-card:hover { transform: translateY(-5px); }
+
+.persona-icon {
+    /* font-size: 3rem;  <-- これは削除するか上書き */
+    width: 80px;
+    height: 80px;
+    background: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--accent-color); /* SVGの色を指定 */
+    flex-shrink: 0; /* 縮まないようにする */
+}
+
+/* SVGがコンテナからはみ出さないように念のため指定 */
+.persona-icon svg {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+.persona-content h4 { font-size: 1.4rem; margin-bottom: 5px; color: var(--text-main); }
+
+.persona-type {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    background: var(--bg-faint);
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.persona-desc {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.persona-voice {
+    position: relative;
+    padding: 20px 25px; 
+    background: #252525;
+    border-radius: 8px;
+    font-style: italic;
+    color: #bbb;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+.persona-voice::before {
+    content: "“";
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 3rem;
+    color: #444;
+    font-family: serif;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.persona-voice::after {
+    content: "”";
+    position: absolute;
+    bottom: -35px;
+    right: 10px;
+    font-size: 3rem;
+    color: #444;
+    font-family: serif;
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* --- Outcome Center Text --- */
+.center-text {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   Skill Matrix Table (13 Columns)
+   ========================================= */
+
+.skill-summary-section {
+    margin: 80px 0;
+}
+
+/* 横スクロール枠の設定 */
+.table-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto; /* コンテンツがはみ出たらスクロール */
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid #333;
+    padding-bottom: 10px; /* スクロールバーとコンテンツの隙間 */
+    margin-bottom: 80px;
+    
+    /* スクロールバーのデザイン（Webkit系） */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) #333;
+}
+
+.table-scroll-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+.table-scroll-wrapper::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 0 0 24px 24px;
+}
+.table-scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 10px;
+}
+
+/* テーブル本体 */
+.skill-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1800px; /* ★重要：13列が潰れないように最小幅を強制的に広げる */
+    table-layout: fixed; /* 列幅を均等に近づける */
+}
+
+.skill-table th,
+.skill-table td {
+    padding: 16px;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+    vertical-align: top;
+    font-size: 0.95rem;
+    
+    /* ここを追加：箱のサイズ計算を厳密にする */
+    box-sizing: border-box; 
+}
+
+/* ★ここが重要：データ列（td）の幅を200pxに固定 */
+.skill-table td {
+    width: 260px;      /* 幅を200pxにする */
+    min-width: 200px;  /* 縮まないようにする */
+}
+
+/* 最後の列の右枠線を消す */
+.skill-table td:last-child {
+    border-right: none;
+}
+
+/* --- 1列目（見出し列）のデザイン --- */
+.skill-table th.sticky-col {
+    position: sticky; /* 横スクロールしても左に固定 */
+    left: 0;
+    background: #252525; /* 背景色がないと透けてしまうため指定 */
+    z-index: 2;
+    color: var(--accent-color);
+    font-weight: bold;
+    border-right: 2px solid #444; /* 固定列の境界線を強調 */
+    width: 130px; /* 固定列の幅 */
+    min-width: 130px;
+    vertical-align: middle;
+}
+
+/* --- 各行のデザイン --- */
+
+/* 1行目：スキル名 */
+.row-header td,
+.row-skill td {
+    font-weight: bold;
+    color: var(--text-main);
+    background: rgba(255,255,255,0.05);
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* --- 2行目：詳細（スクロール対応版） --- */
+
+/* セル自体の高さ指定は削除し、余白調整のみにします */
+.row-content td {
+    padding: 10px; /* 内側の余白を少し狭めてスクロール領域を確保 */
+    height: auto;  /* 高さは中身に任せる */
+    vertical-align: top;
+}
+
+/* ▼ 新しく追加：セルの中のスクロール領域 ▼ */
+.scroll-content {
+    height: 430px;       /* ★ここで高さを固定 */
+    overflow-y: auto;    /* ★縦にスクロールさせる設定 */
+    padding-right: 5px;  /* スクロールバーとの隙間 */
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+/* リストの余白調整 */
+.scroll-content ul, 
+.scroll-content ol {
+    padding-left: 20px;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.scroll-content li {
+    margin-bottom: 4px;
+}
+
+/* ▼ 縦スクロールバーのデザイン（横スクロールと合わせる） ▼ */
+.scroll-content::-webkit-scrollbar {
+    width: 6px; /* 縦スクロールバーの幅 */
+}
+.scroll-content::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+}
+.scroll-content::-webkit-scrollbar-thumb {
+    background-color: #555; /* 目立ちすぎないようグレーに */
+    border-radius: 4px;
+}
+.scroll-content::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-color); /* ホバー時だけライム色 */
+}
+
+.scroll-content .subheading{
+    display: inline-block;
+    color: #ccc;
+    background-color: #333;
+    border: 1px solid #444;
+    padding: 3px 8px 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+/* 3行目：アイコン */
+.row-icon td {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.2rem;
+}
+
+.icon-circle {
+    color: var(--accent-color);
+    font-weight: bold;
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-miterlimit: 10;
+    stroke-width: 3px;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.icon-dash {
+    color: #555;
+    fill: none;
+    stroke: #555;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-width: 3px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* 4行目：ランク */
+.row-rank td {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-family: monospace; /* 等幅フォントで数字を整える */
+    color: var(--text-muted);
+}
+
+/* 最後の行の下線は消す */
+.row-rank th, .row-rank td {
+    border-bottom: none;
+}
