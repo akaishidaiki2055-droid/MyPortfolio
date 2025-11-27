@@ -241,9 +241,11 @@
     color: var(--accent-color);
     font-weight: bold;
     border-right: 2px solid #444; /* 固定列の境界線を強調 */
-    width: 130px; /* 固定列の幅 */
-    min-width: 130px;
+    width: 100px; /* 固定列の幅 */
+    min-width: 100px;
     vertical-align: middle;
+    text-align: center;
+    overflow-wrap: anywhere; /* 収まらない場合に折り返す */
 }
 
 /* --- 各行のデザイン --- */
@@ -269,7 +271,7 @@
 
 /* ▼ 新しく追加：セルの中のスクロール領域 ▼ */
 .scroll-content {
-    height: 430px;       /* ★ここで高さを固定 */
+    height: 360px;       /* ★ここで高さを固定 */
     overflow-y: auto;    /* ★縦にスクロールさせる設定 */
     padding-right: 5px;  /* スクロールバーとの隙間 */
     font-size: 0.85rem;

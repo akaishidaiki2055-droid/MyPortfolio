@@ -276,10 +276,16 @@ footer {
     border: 1px solid transparent;
     transition: all 0.3s ease;
     color: var(--text-main);
+    gap: 16px;
 }
 
-.nav-btn.prev { justify-content: flex-start; }
-.nav-btn.next { justify-content: flex-end; text-align: right; }
+.nav-btn.prev { 
+    justify-content: flex-start; 
+}
+.nav-btn.next { 
+    justify-content: flex-end; 
+    text-align: right; 
+}
 
 .sub-label {
     display: block;
@@ -309,12 +315,56 @@ footer {
     transform: translateY(-2px);
 }
 
-.nav-btn.prev:hover .arrow { transform: translateX(-5px); }
-.nav-btn.next:hover .arrow { transform: translateX(5px); }
+.nav-btn.prev:hover .arrow { 
+    transform: translateX(-5px); 
+}
+.nav-btn.next:hover .arrow { 
+    transform: translateX(5px); 
+}
 
+/* 画面幅が600px以下（スマホ）の場合の調整 */
 @media (max-width: 600px) {
-    .project-navigation { flex-direction: column; }
-    .nav-btn { width: 100%; justify-content: center !important; text-align: center !important; }
+    
+    /* --- Navigation Button Adjustments --- */
+    .project-navigation { 
+        flex-direction: column; /* ボタンを縦積みにする */
+        gap: 16px; /* 上下のボタンの間隔を少し広げる */
+    }
+    
+    .nav-btn { 
+        width: 100%; /* 幅を画面いっぱいに */
+        /* 以前あった justify-content: center !important; を削除 */
+        /* 以前あった text-align: center !important; を削除 */
+    }
+
+    .arrow {
+    margin: 0 0;
+    }
+
+    /* スマホでも左右の配置を明示的に指定（PC版の設定を引き継ぎ・強化） */
+    .nav-btn.prev { 
+        justify-content: flex-start; 
+        text-align: left; 
+    }
+    
+    .nav-btn.next { 
+        justify-content: flex-end; 
+        text-align: right; 
+    }
+
+    /* --- Other SP Adjustments (既存の記述があれば残す) --- */
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+    }
+    
+    .context-card { padding: 24px; }
+    .context-info { grid-template-columns: 1fr; }
+    .context-header h2 { font-size: 1.5rem; }
+    
+    .skill-eval-section { padding: 40px 20px; }
 }
 
 /* =========================================
