@@ -12,17 +12,16 @@
 	<meta property="og:url" content="">
 	<meta property="og:site_name" content="Portfolio - Akaishi Daiki">
 	<meta property="og:description" content="Webデザイナーとしての制作実績、UI/UX設計、ビジュアルデザインの事例を掲載したポートフォリオサイトです。企画からデザインまで幅広い案件に対応しています。">
-    <title>Behavior Change UX - Project Case Study</title>
+    <title>Onboarding Renewal - UX Case Study</title>
     <link rel="shortcut icon" href="img/common/favicon.ico">
 	<link rel="apple-touch-icon" href="img/common/favicon.ico">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/project-1.css">
+    <link rel="stylesheet" href="css/project-3.css">
 </head>
 <body>
 
     <div class="container">
-
         <nav class="navbar">
             <div class="logo"><a href="index.html">MyPortfolio</a></div>
             <ul class="nav-links">
@@ -32,27 +31,27 @@
         </nav>
 
         <section class="hero">
-            <span class="hero-tag">UX Research & Strategy</span>
-            <h1>なぜ健康習慣は「三日坊主」で終わるのか？<br><span class="highlight">意欲×実行力</span>で解く行動変容デザイン</h1>
-            <p>生活習慣病予備軍に対する介入施策。画一的なアドバイスではなく、ユーザーの心理フェーズに合わせた「ハイブリッド型UX」による継続率改善の提案。</p>
+            <span class="hero-tag tag-blue">UI/UX Design & EFO</span>
+            <h1>「使いたい」気持ちを、<br><span class="highlight">入力フォーム</span>で冷めさせない。</h1>
+            <p>アプリ起動から登録完了までのファネル分析に基づき、ユーザーの「つまづきポイント」を特定。心理的負担を最小化するUI設計で、CVR向上を実現。</p>
         </section>
 
         <section class="bento-section" style="padding-bottom: 16px;">
             <div class="bento-grid">
                 <div class="bento-card span-2">
                     <h3>Role</h3>
-                    <p style="text-align: left;">UX Researcher / UX Strategist</p>
-                    <span style="font-size: 0.9rem; color: #888; display:block; margin-top:5px;">定性調査設計, セグメント定義, UX戦略策定</span>
+                    <p>UI/UX Designer</p>
+                    <span class="meta-text">ファネル分析, モーションディレクション, UI設計</span>
                 </div>
                 <div class="bento-card">
                     <h3>Timeline</h3>
-                    <p>2 Months</p>
-                    <span style="font-size: 0.9rem; color: #888;">2025.06 - 2025.07</span>
+                    <p>3 Months</p>
+                    <span class="meta-text">Phase 1: 1.0 Mo / Phase 2: 2.0 Mos</span>
                 </div>
                 <div class="bento-card">
                     <h3>Method</h3>
-                    <p>Depth Interview</p>
-                    <span style="font-size: 0.9rem; color: #888;">Target: 予備軍 (N=14)</span>
+                    <p>Phased Approach</p>
+                    <span class="meta-text">Motivation (定性) → Ability (定量)</span>
                 </div>
             </div>
         </section>
@@ -91,175 +90,117 @@
         </section>
 
         <section class="process-section">
-            <h2 class="section-title">The Challenge</h2>
+            <h2 class="section-title title-blue">The Challenge</h2>
             <div class="text-block">
-                <h3>「危機感」だけでは、行動は続かない。</h3>
-                <p>健康診断でリスクを指摘されたユーザーは、一時的に行動を開始します。しかし調査の結果、多くのユーザーが<strong>「継続フェーズ」で挫折し、元の生活に戻っている</strong>ことが判明しました。</p>
-                <div class="insight-box">
+                <h3>ダウンロード直後の「熱」を、<br>登録完了まで維持できない。</h3>
+                <p>アプリは多機能であるがゆえに、「何ができるアプリなのか」を登録前に理解しづらく、さらに登録時の入力項目が多いという「二重の壁」がありました。ログ分析の結果、アプリ起動直後の離脱（直帰）と、入力途中の離脱の双方が課題であることが判明しました。</p>
+                <div class="insight-box box-blue">
                     <strong>問い：</strong><br>
-                    「意志の強さ」に依存せず、ユーザーを「継続・習慣化」へ導くにはどうすればよいか？
+                    ユーザーの「期待値」を高めつつ、「面倒くささ」を極限まで減らすにはどうすべきか？
                 </div>
             </div>
         </section>
 
         <section class="process-section">
-            <h2 class="section-title">Research & Insight</h2>
-            <p style="margin-bottom: 30px;">デプスインタビュー分析の結果、ユーザーは一律ではなく、<strong>「意欲（Awareness）」と「実行力（Behavior）」の2軸で4つのセグメント</strong>に分類できることが分かりました。</p>
-            <div class="gallery-grid cols-2">
-                <div class="gallery-item">
-                    <h4 class="gallery-head">Before: 課題のあった画面</h4>
-                    <div class="image-container">
-                        <img src="img/project-1/purpose.png" alt="The purpose" onerror="this.style.display='none'">
-                    </div>
-                    <p class="gallery-caption">
-                        情報量が多く、ユーザーが次に何をすべきか迷いやすい状態でした。
-                    </p>
-                </div>
-                <div class="gallery-item">
-                    <h4 class="gallery-head">After: 改善後の画面</h4>
-                    <div class="image-container">
-                        <img src="img/project-1/survey-overview.png" alt="Survey overview" onerror="this.style.display='none'">
-                    </div>
-                    <p class="gallery-caption">
-                        <span class="highlight">情報の優先度</span>を整理し、アクションボタンを明確化することで迷いを解消しました。
-                    </p>
-                </div>
-                <div class="gallery-item">
-                    <h4 class="gallery-head">Before: 課題のあった画面</h4>
-                    <div class="image-container">
-                        <img src="img/project-1/distribution-map.png" alt="Distribution map" onerror="this.style.display='none'">
-                    </div>
-                    <p class="gallery-caption">
-                        情報量が多く、ユーザーが次に何をすべきか迷いやすい状態でした。
-                    </p>
-                </div>
-                <div class="gallery-item">
-                    <h4 class="gallery-head">After: 改善後の画面</h4>
-                    <div class="image-container">
-                        <img src="img/project-1/interview.png" alt="interview" onerror="this.style.display='none'">
-                    </div>
-                    <p class="gallery-caption">
-                        <span class="highlight">情報の優先度</span>を整理し、アクションボタンを明確化することで迷いを解消しました。
-                    </p>
-                </div>
-                <div class="gallery-item">
-                    <h4 class="gallery-head">質問項目</h4>
-                    <div class="image-container js-zoomable">
-                        <img src="img/project-1/interview-items.png" alt="interview" onerror="this.style.display='none'">
-                        <div class="zoom-hint">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
+            <div class="phase-header">
+                <span class="phase-badge">Phase 1</span>
+                <h2>Motivation: 機能紹介アニメーション導入</h2>
+            </div>
+            <p>いきなり個人情報の入力を求めるのではなく、まず「このアプリを使うとどう便利になるか」を直感的に伝えるウォークスルー画面を新設しました。</p>
+
+            <div class="gallery-section" style="margin-top: 40px;">
+                <div class="gallery-grid cols-1">
+                    <div class="gallery-item">
+                        <h4 class="gallery-head">Storytelling</h4>
+                        <div class="video-container">
+                            <div class="phone-frame">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen video-screen">
+                                    <video src="videos/project-3/onboarding-gif.mov" autoplay loop muted playsinline poster="images/p3-animation-poster.jpg">
+                                        お使いのブラウザは動画タグに対応していません。
+                                    </video>
+                                    <div class="screen-placeholder">Loading Video...</div>
+                                </div>
+                            </div>
                         </div>
+                        <p class="gallery-caption">「体調不良→相談→解決」という利用シーンをLottieアニメーションで表現。</p>
                     </div>
-                    <p class="gallery-caption">
-                        <span class="highlight">情報の優先度</span>を整理し、アクションボタンを明確化することで迷いを解消しました。
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="quadrant-matrix">
-                <div class="axis-label y-axis">意欲 (High ↔ Low)</div>
-                <div class="matrix-grid">
-                    <div class="matrix-cell cell-1">
-                        <span class="cell-tag">High 意欲 × Low 行動</span>
-                        <h4>完璧主義の罠</h4>
-                        <p>知識はあるがハードルを上げすぎて挫折。「三日坊主」に自己嫌悪を感じている。</p>
-                        <div class="verbatim">"性格的に勤勉じゃないので..."</div>
-                    </div>
-                    <div class="matrix-cell cell-2">
-                        <span class="cell-tag">High 意欲 × High 行動</span>
-                        <h4>習慣化と義務感</h4>
-                        <p>継続できているが、記録が切れると一気にやる気を失うリスクがある。</p>
-                        <div class="verbatim">"週1回は必ずやると決めている"</div>
-                    </div>
-                    <div class="matrix-cell cell-3">
-                        <span class="cell-tag">Low 意欲 × Low 行動</span>
-                        <h4>無関心・他人事</h4>
-                        <p>健康リスクが自分ごと化されておらず、「面倒」「まだ大丈夫」と感じている。</p>
-                        <div class="verbatim">"自分には関係ないと思っていた"</div>
-                    </div>
-                    <div class="matrix-cell cell-4">
-                        <span class="cell-tag">Low 意欲 × High 行動</span>
-                        <h4>やらされ継続</h4>
-                        <p>会社の施策などで動いているが、意味を感じていないため自律性がない。</p>
-                        <div class="verbatim">"正直、運動しようと思ってやってない"</div>
+                    <div class="gallery-item">
+                        <h4 class="gallery-head">Micro-Interaction</h4>
+                        <div class="image-container js-zoomable">
+                            <img src="img/project-3/onboarding-figma.png" alt="Micro Interactions">
+                            <div class="zoom-hint"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+                        </div>
+                        <p class="gallery-caption">画面遷移に合わせてキャラクターが動く演出を入れ、ポジティブな第一印象を形成。</p>
                     </div>
                 </div>
-                <div class="axis-label x-axis">実行力 (Low ↔ High)</div>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <div class="phase-header">
+                <span class="phase-badge">Phase 2</span>
+                <h2>Ability: 会員登録フローの整理と改修</h2>
+            </div>
+            <p>モチベーションが高まったユーザーを、躓かせずにゴール（登録完了）まで導くための、データドリブンなUI改修を行いました。</p>
+
+            <div class="data-viz-container">
+                <h3>📊 Funnel Analysis: 離脱ポイントの特定</h3>
+                <div class="funnel-graph">
+                    <div class="funnel-bar" style="width: 100%;">
+                        <span class="label">アプリ起動</span>
+                        <span class="value">100%</span>
+                    </div>
+                    <div class="funnel-bar" style="width: 65%;">
+                        <span class="label">登録開始</span>
+                        <span class="value">65%</span>
+                    </div>
+                    <div class="funnel-bar alert" style="width: 25%;">
+                        <span class="label">情報入力<br>(課題)</span>
+                        <span class="value alert-text">⚠️ 25%</span>
+                    </div>
+                    <div class="funnel-bar" style="width: 20%;">
+                        <span class="label">登録完了</span>
+                        <span class="value">20%</span>
+                    </div>
+                </div>
+                <p class="data-caption">調査資料 より、特定の入力画面での離脱が突出して高いことが判明。</p>
             </div>
 
-            <div class="text-block icon-highlight" style="margin-top: 40px;">
-                <h3 style="display: flex; align-items: center; gap: 12px;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C8.13 2 5 5.13 5 9C5 11.38 6.19 13.47 8 14.74V17C8 17.55 8.45 18 9 18H15C15.55 18 16 17.55 16 17V14.74C17.81 13.47 19 11.38 19 9C19 5.13 15.87 2 12 2ZM9 21C9 21.55 9.45 22 10 22H14C14.55 22 15 21.55 15 21V20H9V21Z" fill="currentColor"/>
-                    </svg>
-                    Key Insight: 挫折の原因は「共通」ではない
-                </h3>
-                <p><strong>高意欲層</strong>には「頑張れ」という励ましが逆効果（プレッシャー）になり、逆に<strong>低意欲層</strong>には「健康の重要性」を説いても響かないことが分かりました。セグメントごとに異なる「言葉」が必要です。</p>
+            <div class="gallery-section">
+                <div class="gallery-grid cols-2">
+                    <div class="gallery-item">
+                        <h4 class="gallery-head">Before: 課題のあった画面</h4>
+                        <div class="image-container js-zoomable">
+                            <img src="images/p3-ui-before.png" alt="Before UI">
+                            <div class="zoom-hint"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+                        </div>
+                        <p class="gallery-caption">1画面に大量の項目が並び、エラーも送信するまで分からない状態。</p>
+                    </div>
+                    <div class="gallery-item">
+                        <h4 class="gallery-head">After: 改善後の画面</h4>
+                        <div class="image-container js-zoomable">
+                            <img src="images/p3-ui-after.png" alt="After UI">
+                            <div class="zoom-hint"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+                        </div>
+                        <p class="gallery-caption">項目を<span class="highlight-blue">ステップ分割</span>し、リアルタイムバリデーションを導入してストレスを軽減。</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="ui-showcase">
-            <h2 class="section-title">The Solution</h2>
-            <p style="margin-bottom: 40px;">全ユーザー共通の「安心基盤」と、セグメント別の「可変体験」を組み合わせるハイブリッドUX戦略。</p>
-
-            <div class="solution-cards">
-                <div class="sol-card common">
-                    <div class="card-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                            <polyline points="2 17 12 22 22 17"></polyline>
-                            <polyline points="2 12 12 17 22 12"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Common Base</h3>
-                    <p class="sub">すべてのユーザーへ</p>
-                    <ul>
-                        <li><strong>再開ナビゲーション:</strong> 中断を「失敗」とせず、「おかえり」と迎えるUI。</li>
-                        <li><strong>成果の可視化:</strong> 体重が減らなくても「行動した回数」自体を称賛する。</li>
-                    </ul>
-                </div>
-
-                <div class="sol-card adaptive">
-                    <div class="card-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.88 0 1.6-.67 1.6-1.5 0-.38-.15-.72-.39-.97-.25-.25-.39-.59-.39-.97 0-.83.67-1.5 1.5-1.5h1.68C18.87 17.06 22 13.93 22 10.5 22 5.8 17.52 2 12 2z"></path>
-                            <circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>
-                            <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
-                            <circle cx="7.5" cy="16.5" r=".5" fill="currentColor"></circle>
-                            <circle cx="12" cy="12" r=".5" fill="currentColor"></circle>
-                        </svg>
-                    </div>
-                    <h3>Segment Adaptive</h3>
-                    <p class="sub">タイプ別出し分け</p>
-                    <ul>
-                        <li><strong>高意欲層:</strong> 「休んでもいいよ」という<span class="highlight">義務感の緩和</span>。</li>
-                        <li><strong>低意欲層:</strong> 「1日1分」などの<span class="highlight">ハードル極小化</span>とゲーム性。</li>
-                        <li><strong>無関心層:</strong> 自分に近い事例を見せる<span class="highlight">自分ごと化ナッジ</span>。</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="process-section">
-            <h2 class="section-title">Outcome & Next</h2>
-            <div class="text-block">
-                <ul>
-                    <li><strong>動的セグメンテーションの定義:</strong> 初期アンケートだけでなく、日々の行動ログ（歩数・記録頻度）からユーザーの変化を検知し、アプリの振る舞いを変えるロジックを策定しました。</li>
-                    <li><strong>行動変容ステージへの対応:</strong> 最も困難な「継続」と「再開」フェーズに特化したUXフローを設計。今後は日常利用機能への展開を目指します。</li>
-                </ul>
+            <h2 class="section-title title-blue">Outcome</h2>
+            <div class="text-block center-text">
+                <h3>感性と論理の両輪で、CVRを最大化</h3>
+                <p>Phase 1（機能紹介）による「なんとなく離脱」の防止と、Phase 2（EFO）による「入力ミスの低減」を組み合わせることで、登録完了率（CVR）の大幅な改善と、ユーザーからの「スムーズに始められた」という高評価を獲得しました。</p>
             </div>
         </section>
 
         <section class="skill-eval-section">
 
             <h2 class="section-title">Skill Matrix</h2>
-
+    
             <div class="table-scroll-wrapper">
                 <table class="skill-table">
                     <tbody>
@@ -475,8 +416,8 @@
                                 </svg>
                             </td>
                             <td>
-                                <svg class="icon-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
-                                    <circle cx="16.5" cy="16.5" r="15"/>
+                                <svg class="icon-dash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 3">
+                                    <line x1="1.5" y1="1.5" x2="21.5" y2="1.5"/>
                                 </svg>
                             </td>
                             <td>
@@ -490,18 +431,18 @@
                                 </svg>
                             </td>
                             <td>
-                                <svg class="icon-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
-                                    <circle cx="16.5" cy="16.5" r="15"/>
+                                <svg class="icon-dash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 3">
+                                    <line x1="1.5" y1="1.5" x2="21.5" y2="1.5"/>
                                 </svg>
                             </td>
                             <td>
-                                <svg class="icon-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
-                                    <circle cx="16.5" cy="16.5" r="15"/>
+                                <svg class="icon-dash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 3">
+                                    <line x1="1.5" y1="1.5" x2="21.5" y2="1.5"/>
                                 </svg>
                             </td>
                             <td>
-                                <svg class="icon-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
-                                    <circle cx="16.5" cy="16.5" r="15"/>
+                                <svg class="icon-dash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 3">
+                                    <line x1="1.5" y1="1.5" x2="21.5" y2="1.5"/>
                                 </svg>
                             </td>
                             <td>
@@ -533,26 +474,42 @@
 
                         <tr class="row-rank">
                             <th class="sticky-col">Rank</th>
-                            <td>3R</td>
-                            <td>3R</td>
-                            <td>3R</td>
-                            <td>3R</td>
-                            <td>3R</td>
-                            <td>3R</td>
-                            <td>3R</td>
-                            <td>3R</td>
-                            <td>3R</td>
+                            <td>R3</td>
+                            <td>R3</td>
                             <td>
                                 <svg class="icon-dash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 3">
                                     <line x1="1.5" y1="1.5" x2="21.5" y2="1.5"/>
                                 </svg>
                             </td>
-                            <td>3R</td>
-                            <td>3R</td>
-                            <td>3R</td>
+                            <td>R3</td>
+                            <td>R3</td>
+                            <td>
+                                <svg class="icon-dash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 3">
+                                    <line x1="1.5" y1="1.5" x2="21.5" y2="1.5"/>
+                                </svg>
+                            </td>
+                            <td>
+                                <svg class="icon-dash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 3">
+                                    <line x1="1.5" y1="1.5" x2="21.5" y2="1.5"/>
+                                </svg>
+                            </td>
+                            <td>
+                                <svg class="icon-dash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 3">
+                                    <line x1="1.5" y1="1.5" x2="21.5" y2="1.5"/>
+                                </svg>
+                            </td>
+                            <td>R3</td>
+                            <td>
+                                <svg class="icon-dash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 3">
+                                    <line x1="1.5" y1="1.5" x2="21.5" y2="1.5"/>
+                                </svg>
+                            </td>
+                            <td>R3</td>
+                            <td>R3</td>
+                            <td>R3</td>
                         </tr>
                     </tbody>
-                </table>
+                 </table>
             </div>
 
             <h2 class="section-title title-coral">Skill Evaluation</h2>
@@ -574,17 +531,17 @@
                             <tr>
                                 <td>ユーザー調査</td>
                                 <td><span class="rank-badge">R3</span></td>
-                                <td>生活習慣病予備軍を対象としたデプスインタビュー（N=14）を設計・実施し、定性情報を収集しているため。</td>
+                                <td>ロイヤルユーザー（N=7）に対し、N1分析（デプスインタビュー）を実施。行動変容の時系列変化（きっかけ〜習慣化）を深く掘り下げているため。</td>
                             </tr>
                             <tr>
                                 <td>ユーザー分析／モデリング</td>
                                 <td><span class="rank-badge">R3</span></td>
-                                <td>インタビュー結果を「意欲×実行力」の4象限マトリクスに構造化し、セグメントごとのインサイトを導出しているため。</td>
+                                <td>単なる属性ではなく「感情トリガー」に基づいた4つのペルソナと、それぞれのカスタマージャーニーマップを作成しているため。</td>
                             </tr>
                             <tr>
                                 <td>ユーザー評価</td>
-                                <td><span class="rank-badge">3R</span></td>
-                                <td>Figmaプロトタイプを用いたユーザビリティテスト（N=5）を実施し、80%の肯定的な回答を得て改善につなげているため。</td>
+                                <td><span class="rank-badge">─</span></td>
+                                <td><span class="lowlights">※特定のUIやプロダクトの検証（ユーザビリティテスト等）は本プロジェクトのスコープに含まれていないため。</span></td>
                             </tr>
                         </table>
                     </div>
@@ -605,27 +562,27 @@
                             <tr>
                                 <td>コンセプト定義</td>
                                 <td><span class="rank-badge">R3</span></td>
-                                <td>「管理」から「許し（リカバリー）」へというUXコンセプトの転換（Pivot）を定義し、プロダクトの方向性を定めているため。</td>
+                                <td>LTV向上のために「機能訴求」から「情緒的価値（安心感など）」へアプローチを転換するという戦略コンセプトを定義しているため。</td>
                             </tr>
                             <tr>
                                 <td>体験設計／ユーザー要求仕様作成</td>
                                 <td><span class="rank-badge">R3</span></td>
-                                <td>「Rest Day機能」や「ストリーク維持ロジック」など、ユーザーの心理的ハードルを下げる具体的な体験フローを設計しているため。</td>
+                                <td>セグメントごとに異なるコミュニケーション戦略（安心派にはセーフティネット訴求、等）を策定し、体験の全体像を描いているため。</td>
                             </tr>
                             <tr>
                                 <td>プロダクトやサービスの要求仕様作成</td>
-                                <td><span class="rank-badge">3R</span></td>
-                                <td>「休息日は記録が途切れない」という具体的な機能仕様（ロジック）を策定しているため。</span></td>
+                                <td><span class="rank-badge">─</span></td>
+                                <td><span class="lowlights">※具体的な機能要件や仕様書の作成よりも、戦略・方針策定に重きが置かれているため（判定は保留）。</span></td>
                             </tr>
                             <tr>
                                 <td>情報設計／デザイン仕様作成</td>
-                                <td><span class="rank-badge">3R</span></td>
-                                <td>画面遷移やUIデザイン（配色、レイアウト）を作成し、実装可能なレベルまで落とし込んでいるため。</td>
+                                <td><span class="rank-badge">─</span></td>
+                                <td><span class="lowlights">※具体的な画面デザイン（UI）の作成は本プロジェクトの主要アウトプットではないため。</span></td>
                             </tr>
                             <tr>
                                 <td>プロトタイプ作成</td>
-                                <td><span class="rank-badge">3R</span></td>
-                                <td>Figmaを使用して、インタラクションを含む検証可能なプロトタイプを作成しているため。</td>
+                                <td><span class="rank-badge">─</span></td>
+                                <td><span class="lowlights">※検証用のプロトタイプ作成は行っていないため。</span></td>
                             </tr>
                         </table>
                     </div>
@@ -646,7 +603,7 @@
                             <tr>
                                 <td>進行管理</td>
                                 <td><span class="rank-badge">R3</span></td>
-                                <td>2ヶ月という短期間でのPoC実施に向け、WBSを作成してタスクを細分化。週次で進捗をモニタリングし、遅延リスクを早期に検知・解消することで納期を遵守したため。</td>
+                                <td>全体スケジュールの可視化や会議設定などを網羅的に対応、デプスインタビューでは日程調整などを主体的に行い3週間で実査を完了したため。</td>
                             </tr>
                             <tr>
                                 <td>ワークショップ</td>
@@ -672,17 +629,17 @@
                             <tr>
                                 <td>ビジネス課題の特定</td>
                                 <td><span class="rank-badge">R3</span></td>
-                                <td>「7日後の継続率12%」という定量的なビジネス課題を特定し、改善目標を設定しているため。</td>
+                                <td>「LTVの向上」および「ロイヤルユーザーの定着要因のブラックボックス化」というビジネス課題を特定し、調査を設計しているため。</td>
                             </tr>
                             <tr>
                                 <td>プロジェクト設計</td>
                                 <td><span class="rank-badge">R3</span></td>
-                                <td>「目的」「ゴール」「対象者（セグメント）」を明確に定義し、どのような手法で課題にアプローチするかという全体の調査設計（Design）が論理的に構築されているため。</td>
+                                <td>「N1分析の流れ」 として、仮説構築からスクリーニング、実査、分析に至るまでのプロジェクトフローを独自に設計しているため。</td>
                             </tr>
                             <tr>
                                 <td>プロジェクト運営</td>
                                 <td><span class="rank-badge">R3</span></td>
-                                <td>設計した計画に基づき、14名の対象者へのインタビュー実査を完遂し、PoC開始までプロジェクトを推進させているため。</td>
+                                <td>外部調査に基づく仮説立てから、アンケート送付、インタビュー実施、ペルソナ作成 までの一連のプロセスを主導し、完遂しているため。</td>
                             </tr>
                         </table>
                     </div>
@@ -698,10 +655,10 @@
                     <span class="main-label">トップに戻る</span>
                 </div>
             </a>
-            <a href="project-2.html" class="nav-btn next">
+            <a href="project-1.html" class="nav-btn next">
                 <div>
-                    <span class="sub-label">Project-2</span>
-                    <span class="main-label">ロイヤルユーザーN1分析</span>
+                    <span class="sub-label">project-1</span>
+                    <span class="main-label">行動変容UX</span>
                 </div>
                 <span class="arrow">→</span>
             </a>
@@ -710,7 +667,7 @@
         <footer>
             <p>© 1995‐2025 Members Co. & Akaishi Daiki. All Rights Reserved.</p>
         </footer>
-        
+
     </div>
 
     <button id="backToTop" class="back-to-top" aria-label="トップに戻る">

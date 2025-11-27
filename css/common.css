@@ -966,3 +966,105 @@ footer {
     margin-top: 10px;
     min-height: 1.2em; /* エラーがなくても高さを確保してガタつき防止 */
 }
+
+/* =========================================
+   Image Lightbox & Zoom Styles
+   ========================================= */
+
+/* --- 拡大可能な画像のスタイル --- */
+.image-container.js-zoomable {
+    cursor: zoom-in; /* カーソルを虫眼鏡に */
+    position: relative;
+}
+
+/* 拡大アイコン（最初は隠す） */
+.zoom-hint {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 60px; height: 60px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+/* ホバー時にアイコンを表示 */
+.image-container.js-zoomable:hover .zoom-hint {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- ライトボックス（モーダル）本体 --- */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow: hidden; /* はみ出し防止 */
+}
+
+.lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 画像ラッパー（移動・拡大の基準点） */
+.lightbox-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab; /* 掴めるカーソル */
+}
+
+.lightbox-content:active {
+    cursor: grabbing; /* 掴んでいるカーソル */
+}
+
+.lightbox-content img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.1s linear; /* スムーズな追従 */
+    will-change: transform;
+}
+
+/* 閉じるボタン (修正版) */
+.lightbox-close {
+    position: absolute;
+    top: 30px; right: 30px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2001;
+    
+    /* ▼▼ ここから修正：正円にするための設定 ▼▼ */
+    width: 60px;       /* 幅を固定 */
+    height: 60px;      /* 高さを固定 */
+    padding: 0;        /* パディングをリセット */
+    display: flex;     /* アイコンを中央寄せ */
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* これで正円になります */
+    /* ▲▲ 修正ここまで ▲▲ */
+
+    transition: background 0.3s;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

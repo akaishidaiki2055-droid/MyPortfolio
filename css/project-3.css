@@ -1,0 +1,362 @@
+/* =========================================
+   Project-3 Specific Styles (Onboarding / EFO)
+   ========================================= */
+
+:root {
+    /* Project-3 Accent: Royal Blue */
+    --accent-color: #4D8BFF; 
+    /* Insight Box用 (青の薄い背景) */
+    --bg-faint: rgba(77, 139, 255, 0.1);
+    
+    /* Alert Color (Funnel Drop-off) */
+    --color-alert: #FF4D4D;
+}
+
+/* 上書き: Insight Box */
+.insight-box {
+    background: var(--bg-faint);
+}
+
+.hero-tag.tag-blue {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.highlight-blue {
+    color: var(--accent-color);
+}
+
+.section-title.title-blue {
+    border-left-color: var(--accent-color);
+}
+
+.insight-box.box-blue {
+    border-left-color: var(--accent-color);
+    background: var(--bg-faint);
+}
+
+/* --- Phase Header (フェーズ区切り) --- */
+.phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 16px;
+}
+
+.phase-badge {
+    background: var(--accent-color);
+    color: #000;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.phase-header h2 {
+    font-size: 1.6rem;
+    color: var(--text-main);
+    margin: 0;
+}
+
+/* --- Data Visualization (Funnel Graph) --- */
+.data-viz-container {
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid #333;
+    margin: 40px 0;
+}
+
+.data-viz-container h3 {
+    margin-bottom: 30px;
+    font-size: 1.3rem;
+}
+
+.funnel-graph {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.funnel-bar {
+    height: 44px;
+    background: linear-gradient(90deg, #2c3e50, #1a252f); /* デフォルトのバー色 */
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    transition: width 1s ease;
+}
+
+/* 離脱が多い箇所の強調表示 */
+.funnel-bar.alert {
+    background: linear-gradient(90deg, rgba(255, 77, 77, 0.2), rgba(255, 77, 77, 0.1));
+    border: 1px solid var(--color-alert);
+}
+
+.funnel-bar .label { 
+    font-size: 0.9rem; 
+    z-index: 2;
+    text-align: start; 
+    line-height: 1rem;
+    width: 45%;
+}
+.funnel-bar .value { 
+    font-size: 1rem; 
+    z-index: 2; 
+    line-height: 1rem;
+    text-align: end;
+    width: 55%;
+}
+
+.alert-text { color: var(--color-alert); }
+
+.data-caption {
+    font-size: 0.85rem;
+    color: #888;
+    text-align: right;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .phase-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .funnel-bar { min-width: 100%; box-sizing: border-box; } /* スマホでは幅をフルに */
+}
+
+/* =========================================
+   Skill Matrix Table (13 Columns)
+   ========================================= */
+
+.skill-summary-section {
+    margin: 80px 0;
+}
+
+/* 横スクロール枠の設定 */
+.table-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto; /* コンテンツがはみ出たらスクロール */
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid #333;
+    padding-bottom: 10px; /* スクロールバーとコンテンツの隙間 */
+    margin-bottom: 80px;
+    
+    /* スクロールバーのデザイン（Webkit系） */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) #333;
+}
+
+.table-scroll-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+.table-scroll-wrapper::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 0 0 24px 24px;
+}
+.table-scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 10px;
+}
+
+/* テーブル本体 */
+.skill-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1800px; /* ★重要：13列が潰れないように最小幅を強制的に広げる */
+    table-layout: fixed; /* 列幅を均等に近づける */
+}
+
+.skill-table th,
+.skill-table td {
+    padding: 16px;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+    vertical-align: top;
+    font-size: 0.95rem;
+    
+    /* ここを追加：箱のサイズ計算を厳密にする */
+    box-sizing: border-box; 
+}
+
+/* ★ここが重要：データ列（td）の幅を200pxに固定 */
+.skill-table td {
+    width: 260px;      /* 幅を200pxにする */
+    min-width: 200px;  /* 縮まないようにする */
+}
+
+/* 最後の列の右枠線を消す */
+.skill-table td:last-child {
+    border-right: none;
+}
+
+/* --- 1列目（見出し列）のデザイン --- */
+.skill-table th.sticky-col {
+    position: sticky; /* 横スクロールしても左に固定 */
+    left: 0;
+    background: #252525; /* 背景色がないと透けてしまうため指定 */
+    z-index: 2;
+    color: var(--accent-color);
+    font-weight: bold;
+    border-right: 2px solid #444; /* 固定列の境界線を強調 */
+    width: 100px; /* 固定列の幅 */
+    min-width: 100px;
+    vertical-align: middle;
+    text-align: center;
+    overflow-wrap: anywhere; /* 収まらない場合に折り返す */
+}
+
+/* --- 各行のデザイン --- */
+
+/* 1行目：スキル名 */
+.row-header td,
+.row-skill td {
+    font-weight: bold;
+    color: var(--text-main);
+    background: rgba(255,255,255,0.05);
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* --- 2行目：詳細（スクロール対応版） --- */
+
+/* セル自体の高さ指定は削除し、余白調整のみにします */
+.row-content td {
+    padding: 10px; /* 内側の余白を少し狭めてスクロール領域を確保 */
+    height: auto;  /* 高さは中身に任せる */
+    vertical-align: top;
+}
+
+/* ▼ 新しく追加：セルの中のスクロール領域 ▼ */
+.scroll-content {
+    height: 360px;       /* ★ここで高さを固定 */
+    overflow-y: auto;    /* ★縦にスクロールさせる設定 */
+    padding-right: 5px;  /* スクロールバーとの隙間 */
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+/* リストの余白調整 */
+.scroll-content ul, 
+.scroll-content ol {
+    padding-left: 20px;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.scroll-content li {
+    margin-bottom: 4px;
+}
+
+/* ▼ 縦スクロールバーのデザイン（横スクロールと合わせる） ▼ */
+.scroll-content::-webkit-scrollbar {
+    width: 6px; /* 縦スクロールバーの幅 */
+}
+.scroll-content::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+}
+.scroll-content::-webkit-scrollbar-thumb {
+    background-color: #555; /* 目立ちすぎないようグレーに */
+    border-radius: 4px;
+}
+.scroll-content::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-color); /* ホバー時だけライム色 */
+}
+
+.scroll-content .subheading{
+    display: inline-block;
+    color: #ccc;
+    background-color: #333;
+    border: 1px solid #444;
+    padding: 3px 8px 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+/* 3行目：アイコン */
+.row-icon td {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.2rem;
+}
+
+.icon-circle {
+    color: var(--accent-color);
+    font-weight: bold;
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-miterlimit: 10;
+    stroke-width: 3px;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.icon-dash {
+    color: #555;
+    fill: none;
+    stroke: #555;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-width: 3px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* 4行目：ランク */
+.row-rank td {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-family: monospace; /* 等幅フォントで数字を整える */
+    color: var(--text-muted);
+}
+
+/* 最後の行の下線は消す */
+.row-rank th, .row-rank td {
+    border-bottom: none;
+}
+
+/* =========================================
+   Video Container Styles (for Project-3)
+   ========================================= */
+
+/* 動画コンテナ（スマホ枠を中央寄せにする） */
+.video-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background: #111; /* 背景を少し暗くして目立たせる */
+    border-radius: 16px;
+    border: 1px solid #333;
+}
+
+/* 動画表示用の画面エリア */
+.phone-screen.video-screen {
+    background: #000; /* 動画ロード前の背景 */
+    position: relative;
+}
+
+/* 動画タグ本体の設定 */
+.video-screen video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画面枠いっぱいにトリミングして表示 */
+    display: block;
+    position: relative; /* プレースホルダーより前面に出す */
+    z-index: 2;
+}
+
+/* 動画ロード中のテキスト */
+.video-screen .screen-placeholder {
+    z-index: 1; /* 動画の後ろに配置 */
+}
