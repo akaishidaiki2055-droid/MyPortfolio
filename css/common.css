@@ -24,9 +24,6 @@ body {
     font-family: var(--font-main);
     line-height: 1.6;
     overflow-x: hidden;
-    text-align: justify;
-    font-feature-settings: "palt";
-    letter-spacing: 0.05em;
 }
 
 a { 
@@ -34,9 +31,17 @@ a {
     color: inherit; 
 }
 
-h1, h2, h3 { 
+p, li, ul, dt, dd, span{
+    text-align: justify;
+    font-feature-settings: "palt";
+    letter-spacing: 0.05em;
+    word-break: break-all;
+}
+
+h1, h2, h3, h4{ 
     font-weight: 800; 
     letter-spacing: 0.05em; 
+    font-feature-settings: "palt";
 }
 
 h2 {
@@ -54,6 +59,18 @@ h3 {
 /* 共通の強調色クラス */
 .highlight { color: var(--accent-color); }
 .lowlights { color: #555; }
+
+/* デフォルト（PCなど）では非表示にする */
+.sp-br {
+  display: none;
+}
+
+/* スマホ（画面幅767px以下）の時だけ表示する */
+@media screen and (max-width: 767px) {
+  .sp-br {
+    display: block;
+  }
+}
 
 /* --- Layout Utility --- */
 .container {
@@ -102,6 +119,9 @@ footer {
     text-align: center;
     border-top: 1px solid #333;
     color: var(--text-muted);
+}
+footer p {
+    text-align: center;
 }
 
 .contact-btn {
@@ -168,8 +188,20 @@ footer {
     border-color: var(--accent-color);
 }
 
-.bento-card h3 { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 8px; }
-.bento-card p { font-size: 1.2rem; font-weight: bold; }
+.bento-card h3 { 
+    color: var(--text-muted); 
+    font-size: 0.9rem; 
+    text-transform: uppercase; 
+    margin-bottom: 8px; 
+}
+
+.bento-card h4 { 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    text-align: left;
+    line-height: 1.3em;
+    margin-bottom: 10px;
+}
 
 .span-2 { grid-column: span 2; }
 @media (max-width: 600px) { .span-2 { grid-column: span 1; } }
@@ -1044,6 +1076,7 @@ footer {
 .image-container img {
     width: 100%;
     height: auto;
+    max-height: 420px;
     display: block;
     object-fit: contain; /* 画像全体を表示（トリミングしない） */
 }
@@ -1243,29 +1276,34 @@ footer {
     will-change: transform;
 }
 
-/* 閉じるボタン (修正版) */
+/* 閉じるボタン (修正版: 常時背景あり) */
 .lightbox-close {
     position: absolute;
     top: 30px; right: 30px;
-    background: transparent;
+    
+    /* ▼▼ 修正箇所：透明ではなく、半透明の黒背景を指定 ▼▼ */
+    background: rgba(0, 0, 0, 0.5); 
+    /* ▲▲ 修正ここまで ▲▲ */
+    
     border: none;
     color: #fff;
     cursor: pointer;
-    z-index: 2001;
+    z-index: 10000;
     
-    /* ▼▼ ここから修正：正円にするための設定 ▼▼ */
-    width: 60px;       /* 幅を固定 */
-    height: 60px;      /* 高さを固定 */
-    padding: 0;        /* パディングをリセット */
-    display: flex;     /* アイコンを中央寄せ */
+    /* 正円にする設定 */
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%; /* これで正円になります */
-    /* ▲▲ 修正ここまで ▲▲ */
-
-    transition: background 0.3s;
+    border-radius: 50%;
+    
+    /* 背景色が変わるアニメーション */
+    transition: background 0.3s ease;
 }
 
+/* ホバー時は少し濃くする（または明るくする） */
 .lightbox-close:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.8); /* より濃い黒にして強調 */
 }

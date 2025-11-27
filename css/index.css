@@ -182,13 +182,84 @@
     transform: translateX(0);
 }
 
-/* --- About Teaser --- */
+/* --- About Teaser (背景画像アニメーション対応版) --- */
 .about-teaser {
-    background: var(--card-bg);
-    padding: 80px 40px;
-    border-radius: var(--radius);
+    position: relative;
+    padding: 120px 40px;
     text-align: center;
     margin-bottom: 80px;
+    border-radius: var(--radius);
+    overflow: hidden; /* 拡大した画像がはみ出さないようにトリミング */
+    
+    /* 枠線 */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    
+    /* 枠線の色だけここでアニメーション */
+    transition: border-color 0.3s ease;
+}
+
+/* ▼ 1. 背景写真レイヤー (::before) */
+.about-teaser::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    
+    /* 背景写真 */
+    background-image: url('../img/about/akaishi_artist_image.webp');
+    background-size: cover;
+    background-position: center;
+    
+    z-index: 0; /* 一番後ろ */
+    
+    /* ★ここで拡大アニメーションを設定 */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ▼ 2. ドット＆グラデーションレイヤー (::after) */
+.about-teaser::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    
+    /* ドットパターン + 暗くするグラデーション */
+    background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px),
+        linear-gradient(135deg, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.6) 100%);
+        
+    background-size: 30px 30px, cover;
+    
+    z-index: 1; /* 写真の上に乗せる */
+    pointer-events: none; /* マウス操作を邪魔しない */
+}
+
+/* ▼ 3. ホバー時のアクション */
+.about-teaser:hover {
+    border-color: var(--accent-color); /* 枠線を光らせる */
+}
+
+.about-teaser:hover::before {
+    transform: scale(1.05); /* 写真レイヤーだけを拡大 */
+}
+
+/* ▼ 4. コンテンツを最前面へ */
+.about-teaser h2,
+.about-teaser p,
+.about-teaser .btn-secondary {
+    position: relative;
+    z-index: 2; /* 背景より手前に表示 */
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+
+/* 中のテキストを目立たせる */
+.about-teaser h2,
+.about-teaser p,
+.about-teaser .btn-secondary {
+    position: relative;
+    z-index: 2; /* 背景より手前に表示 */
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8); /* 影をつけて読みやすく */
 }
 
 .about-teaser h2 {
@@ -197,9 +268,10 @@
 }
 
 .about-teaser p {
-    max-width: 600px;
+    max-width: 720px;
     margin: 0 auto 40px;
     color: var(--text-muted);
+    text-align: center;
 }
 
 .btn-secondary {
