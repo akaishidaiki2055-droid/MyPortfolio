@@ -4,9 +4,9 @@
 
 :root {
     /* Project-1 Accent: Electric Lime */
-    --accent-color: #D4FF00;
+    --accent-color: #1de29d;
     /* Insight Box用の薄い背景色（ライム用） */
-    --bg-faint: rgba(212, 255, 0, 0.1);
+    --bg-faint: rgba(0, 255, 140, 0.1);
 }
 
 /* 上書き: Insight Boxの背景色をページ固有のものにする */

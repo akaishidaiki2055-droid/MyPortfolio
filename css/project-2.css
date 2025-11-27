@@ -130,7 +130,7 @@
     content: "“";
     position: absolute;
     top: -10px;
-    left: 10px;
+    left: 0px;
     font-size: 3rem;
     color: #444;
     font-family: serif;
@@ -168,8 +168,8 @@
 
     /* 引用符の位置も少し調整（スマホでははみ出しすぎないように） */
     .persona-voice::after {
-        bottom: -25px;
-        right: 0;
+        bottom: -35px;
+        right: 15px;
     }
 }
 
