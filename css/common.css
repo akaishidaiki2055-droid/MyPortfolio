@@ -1543,3 +1543,66 @@ footer p {
 .lightbox-close:hover {
     background: rgba(0, 0, 0, 0.8); /* より濃い黒にして強調 */
 }
+
+/* =========================================
+   Dropdown Menu Links (with Arrow Animation)
+   ========================================= */
+
+/* ドロップダウン内のリンク */
+.dropdown-menu a {
+    /* レイアウト調整 */
+    display: flex;
+    justify-content: space-between; /* 文字と矢印を左右に離す */
+    align-items: center;
+    
+    padding: 12px 20px; /* クリックしやすいように広げる */
+    color: #ccc;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* =========================================
+   Dropdown Menu Links (Arrow Update)
+   ========================================= */
+
+/* ドロップダウン内のリンク */
+.dropdown-menu a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 12px 20px;
+    color: #ccc;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* 矢印アイコン（indexページと同じ「→」を使用） */
+.dropdown-menu a::after {
+    content: '→';
+    font-weight: bold;
+    font-size: 1.0rem; /* 文字より少し大きくして存在感を出す */
+    line-height: 1;
+    
+    /* 初期状態 */
+    margin-left: 10px;
+    color: var(--text-muted); /* 通常時はグレー */
+    
+    /* アニメーション設定 */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s;
+}
+
+/* --- ホバー時の挙動 --- */
+.dropdown-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff; /* リンク文字を白く */
+}
+
+.dropdown-menu a:hover::after {
+    color: var(--accent-color); /* 矢印をテーマカラー（ライム/ピンク/青）に */
+    transform: translateX(5px); /* 右に少しスライド */
+}
