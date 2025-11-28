@@ -211,7 +211,7 @@ body {
     display: block;
     padding: 10px 16px;
     color: #ccc;
-    font-size: 0.9rem;
+    font-size: 1.0rem;
     white-space: nowrap;
     border-radius: 6px;
     transition: background 0.2s, color 0.2s;
@@ -259,7 +259,7 @@ body {
 
 /* --- Footer (画面幅いっぱいに拡張) --- */
 footer {
-    padding: 80px 0;
+    padding: 40px 0;
     text-align: center;
     border-top: 1px solid #333;
     color: var(--text-muted);
@@ -277,6 +277,7 @@ footer {
 }
 footer p {
     text-align: center;
+    font-size: 10px;
 }
 
 .contact-btn {

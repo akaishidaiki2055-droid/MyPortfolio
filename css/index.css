@@ -217,7 +217,7 @@
 /* --- About Teaser (背景画像アニメーション対応版) --- */
 .about-teaser {
     position: relative;
-    padding: 120px 40px;
+    padding: 60px 40px;
     text-align: center;
     margin-bottom: 80px;
     border-radius: var(--radius);
