@@ -171,3 +171,168 @@
 .video-screen .screen-placeholder {
     z-index: 1; /* 動画の後ろに配置 */
 }
+
+/* =========================================
+   Achievements Section (Tech Spec Cards)
+   ========================================= */
+
+.achievements-section {
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.achievement-card {
+    background: #1a1a1a; /* 少し明るめの黒 */
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, border-color 0.3s;
+    
+    /* 左側に太いアクセントライン（ブルー） */
+    border-left: 6px solid var(--accent-color);
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* --- Header --- */
+.card-header {
+    padding: 24px 30px;
+    border-bottom: 1px solid #333;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.skill-category {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.card-header h3 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: var(--text-main);
+}
+
+/* --- Body --- */
+.card-body {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+.card-body h4 {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.card-body ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.card-body li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 8px;
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.card-body li::before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* アピールポイントのボックス */
+.highlight-box {
+    background: var(--bg-faint); /* 薄いブルー背景 */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px dashed rgba(77, 139, 255, 0.3); /* ブルーの破線 */
+}
+
+.highlight-box .label {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.highlight-box p {
+    font-size: 0.9rem;
+    color: #eee;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --- Footer (Outputs) --- */
+.card-footer {
+    padding: 20px 30px;
+    background: #151515;
+    border-top: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.output-label {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.output-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.output-tags span {
+    font-size: 0.8rem;
+    color: #ccc;
+    background: #333;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid #444;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
