@@ -302,4 +302,100 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* =========================================
+       7. Image Slider Logic (Swipe & Click)
+       ========================================= */
+    const sliderContainer = document.getElementById('projectSlider');
+
+    if (sliderContainer) {
+        const track = sliderContainer.querySelector('.slider-track');
+        const slides = Array.from(track.children);
+        const nextBtn = sliderContainer.querySelector('.next');
+        const prevBtn = sliderContainer.querySelector('.prev');
+        const indicatorsContainer = sliderContainer.querySelector('.slider-indicators');
+        const indicators = Array.from(indicatorsContainer.children);
+
+        let currentIndex = 0;
+
+        // スライドを移動させる関数
+        const moveToSlide = (index) => {
+            // インデックスの範囲制限
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+
+            track.style.transform = `translateX(-${index * 100}%)`;
+            currentIndex = index;
+
+            // インジケーターの更新
+            indicators.forEach((ind, i) => {
+                if (i === currentIndex) {
+                    ind.classList.add('active');
+                } else {
+                    ind.classList.remove('active');
+                }
+            });
+        };
+
+        // クリックイベント
+        if (nextBtn) nextBtn.addEventListener('click', () => moveToSlide(currentIndex + 1));
+        if (prevBtn) prevBtn.addEventListener('click', () => moveToSlide(currentIndex - 1));
+
+        // インジケータークリック
+        indicators.forEach((ind, i) => {
+            ind.addEventListener('click', () => moveToSlide(i));
+        });
+
+        // --- スマホ用スワイプ機能 ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        sliderContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        sliderContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        const handleSwipe = () => {
+            const threshold = 50; // 50px以上動かしたらスワイプとみなす
+            if (touchEndX < touchStartX - threshold) {
+                // 左スワイプ -> 次へ
+                moveToSlide(currentIndex + 1);
+            } else if (touchEndX > touchStartX + threshold) {
+                // 右スワイプ -> 前へ
+                moveToSlide(currentIndex - 1);
+            }
+        };
+    }
+
+    /* =========================================
+       8. Accordion Internal Close Button
+       ========================================= */
+    const internalCloseBtns = document.querySelectorAll('.internal-close-btn');
+
+    internalCloseBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // 親のdetails要素を探す
+            const details = btn.closest('details');
+            
+            if (details) {
+                // 1. 閉じる
+                details.removeAttribute('open');
+                
+                // 2. アコーディオンのトップ位置までスクロールして戻す（迷子防止）
+                const rect = details.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                // ヘッダーの高さ(約100px) + 余白分を引いた位置へ
+                const targetTop = rect.top + scrollTop - 120;
+
+                window.scrollTo({
+                    top: targetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
 });

@@ -344,13 +344,6 @@ footer p {
     border-color: var(--accent-color);
 }
 
-.bento-card h3 { 
-    color: var(--text-muted); 
-    font-size: 0.9rem; 
-    text-transform: uppercase; 
-    margin-bottom: 8px; 
-}
-
 .bento-card h4 { 
     font-size: 1.2rem; 
     font-weight: bold; 
@@ -359,8 +352,75 @@ footer p {
     margin-bottom: 10px;
 }
 
+.bento-card-inner{
+    display: grid;
+    justify-content: space-between;
+}
+
 .span-2 { grid-column: span 2; }
-@media (max-width: 600px) { .span-2 { grid-column: span 1; } }
+
+.span-3 { grid-column: span 3; }
+
+/* --- スマホ対応（メディアクエリ内） --- */
+@media (max-width: 600px) {
+    /* span-2 に加えて span-3 もスマホでは1列にする */
+    .span-2, 
+    .span-3 { 
+        grid-column: span 1; 
+    }
+}
+
+/* グリッドの全幅を使うクラス（PCで横長にするため） */
+.bento-card.span-full {
+    grid-column: 1 / -1;
+}
+
+/* 成果物リストのコンテナ（Flexboxで横並び） */
+.deliverables-group {
+    display: flex;
+    gap: 40px; /* アイテム間の余白 */
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* 区切り線 */
+    padding-top: 20px;
+}
+
+/* 個々の成果物アイテム */
+.deliverable-item {
+    flex: 1; /* 幅を均等にする */
+}
+
+/* 見出し（h4相当） */
+.deliverable-item h4 {
+    font-size: 0.85rem;
+    color: var(--accent-color); /* テーマカラー */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+
+/* テキスト */
+.deliverable-item p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-main);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* --- スマホ対応（縦並び） --- */
+@media (max-width: 768px) {
+    .deliverables-group {
+        flex-direction: column; /* 縦積みに変更 */
+        gap: 24px;
+    }
+    
+    .deliverable-item {
+        width: 100%;
+        border-left: 3px solid var(--accent-color); /* 左に線をつけて区切りを明確に */
+        padding-left: 16px;
+    }
+}
 
 /* --- Process Section (Scrollytelling) --- */
 .process-section { padding: 100px 0; }
@@ -371,6 +431,12 @@ footer p {
     border-left: 5px solid var(--accent-color); 
     padding-left: 20px; 
     text-align: left;
+}
+
+.presentation-section h3 { 
+    background-color: var(--bg-faint);
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 .process-step {
@@ -801,7 +867,7 @@ footer p {
 } */
 
 /* =========================================
-   Product Context Section (Updated)
+   Product Context Section (2-Column Layout)
    ========================================= */
 
 .product-context-section {
@@ -812,24 +878,31 @@ footer p {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid #333;
     border-radius: var(--radius);
-    padding: 40px 40px 50px 40px;
+    padding: 50px 40px;
     position: relative;
     overflow: hidden;
+    
+    /* ▼▼ 2カラムグリッドの設定 ▼▼ */
+    display: grid;
+    /* 左(可変):右(固定幅) */
+    grid-template-columns: 1fr 280px; 
+    gap: 60px; /* カラム間の余白 */
+    align-items: center; /* 垂直方向中央揃え */
 }
 
-/* .context-card::before {
+.context-card::before {
     content: '';
     position: absolute;
     top: 0; bottom: 0; left: 0;
     width: 6px;
     background-color: var(--accent-color);
-} */
+}
 
-.context-header h2 {
-    font-size: 1.8rem;
-    margin-top: 10px;
-    margin-bottom: 0;
-    color: var(--text-main);
+/* --- 1. 左カラム（テキスト情報） --- */
+.context-col-text {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .context-label {
@@ -838,86 +911,102 @@ footer p {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
 }
 
-/* --- レイアウト変更：Flexboxで横並び --- */
-.context-body {
-    border-top: 1px solid #333;
-    padding-top: 30px;
-    margin-top: 24px;
-    display: flex; /* 横並びにする */
-    gap: 40px;     /* テキストとスマホの間隔 */
-    align-items: center;
-    flex-direction: column;
-}
-
-.context-text {
-    flex: 1; /* 余った幅をテキストが使う */
-}
-
-.context-visual {
-    flex: 0 0 220px; /* スマホの幅を固定（220px分確保） */
-    display: flex;
-    justify-content: center;
+.context-header h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: var(--text-main);
+    line-height: 1.3;
 }
 
 .context-desc {
     font-size: 1rem;
     color: #ccc;
     line-height: 1.8;
-    margin-bottom: 30px;
-}
-
-.context-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.info-row dt {
-    font-size: 0.8rem;
-    color: #888;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.info-row dd {
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--text-main);
     margin: 0;
 }
 
-/* --- スマホ風フレームのデザイン --- */
-.phone-frame {
-    width: 200px;  /* スマホの横幅 */
-    height: 400px; /* スマホの縦幅 */
-    background: #111; /* 本体の色 */
-    border: 6px solid #333; /* ベゼル（枠）の色 */
-    border-radius: 24px; /* 本体の角丸 */
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6); /* 影で浮き上がらせる */
-    overflow: hidden; /* 画面のはみ出し防止 */
+/* スペック情報 */
+.context-info {
+    display: grid;
+    grid-template-columns: auto 1fr; /* ラベル幅自動、中身残り全部 */
+    gap: 20px 40px; /* 縦横の隙間 */
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* 画面エリア */
+.info-row {
+    display: contents; /* グリッドの直接の子要素として振る舞わせる */
+}
+
+.info-row dt {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 4px; /* ベースライン調整 */
+}
+
+.info-row dd {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #ddd;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --- 2. 右カラム（ビジュアル） --- */
+.context-col-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.phone-frame {
+    width: 220px;
+    height: 440px;
+    background: #111;
+    border: 6px solid #333;
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    overflow: hidden;
+    flex-shrink: 0; /* 縮小防止 */
+}
+
+/* PC表示時: product-context-section内のスマホだけ6度傾ける */
+.product-context-section .phone-frame {
+    transform: rotate(6deg);
+}
+
+/* スマホ/タブレット表示時: 傾きを戻す（レイアウト崩れ防止） */
+@media (max-width: 900px) {
+    .product-context-section .phone-frame {
+        transform: rotate(0deg);
+    }
+}
+
 .phone-screen {
     width: 100%;
     height: 100%;
-    background: #222; /* 画像がない時の背景色 */
+    background: #222;
     position: relative;
     overflow: hidden;
-    border-radius: 18px; /* 画面の角丸 */
+    border-radius: 24px;
 }
 
 .phone-screen img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 画像を枠いっぱいにトリミングして表示 */
+    object-fit: cover;
     display: block;
+
+    position: relative;
+    z-index: 2;
 }
 
-/* 画像がない時のプレースホルダー文字 */
 .screen-placeholder {
     position: absolute;
     top: 50%; left: 50%;
@@ -925,35 +1014,48 @@ footer p {
     color: #555;
     font-size: 0.9rem;
     font-weight: bold;
-    text-transform: uppercase;
+
+    z-index: 1;
 }
 
-/* ノッチ（上部の切り欠き） */
 .phone-notch {
     position: absolute;
-    top: 0;
-    left: 50%;
+    top: 0; left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 20px;
-    background: #111;
-    border-radius: 0 0 10px 10px;
+    width: 90px; height: 20px;
+    background: #333;
+    border-radius: 0 0 12px 12px;
     z-index: 10;
 }
 
-/* --- レスポンシブ対応（スマホ表示） --- */
-@media (max-width: 768px) {
-    .context-body {
-        align-items: center; /* 中央揃え */
+/* --- レスポンシブ対応 --- */
+@media (max-width: 900px) {
+    .context-card {
+        grid-template-columns: 1fr; /* 1カラムに変更 */
+        gap: 40px;
+        padding: 40px 30px;
     }
     
-    .context-visual {
-        margin-bottom: 20px;
+    .context-col-visual {
+        order: -1; /* スマホを上に持ってくる */
+        margin-bottom: 10px;
     }
     
+    .phone-frame {
+        width: 200px;
+        height: 400px;
+        transform: rotate(0deg); /* 傾き解除 */
+    }
+    
+    /* 情報リストを縦積みに戻す */
     .context-info {
-        grid-template-columns: 1fr; /* 情報を縦積みに */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
+    
+    .info-row { display: block; }
+    .info-row dt { margin-bottom: 4px; }
 }
 
 /* =========================================
@@ -1605,4 +1707,688 @@ footer p {
 .dropdown-menu a:hover::after {
     color: var(--accent-color); /* 矢印をテーマカラー（ライム/ピンク/青）に */
     transform: translateX(5px); /* 右に少しスライド */
+}
+
+/* =========================================
+   PDF Link Grid (Thumbnail Style)
+   ========================================= */
+
+.presentation-section {
+    margin: 80px 0;
+}
+
+.pdf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* カード全体 */
+.pdf-card {
+    display: block;
+    text-decoration: none;
+    background: var(--card-bg);
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.pdf-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+/* サムネイルエリア */
+.pdf-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* パワポと同じ比率 */
+    background-color: #2a2a2a; /* 画像がない時の背景色 */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-weight: bold;
+}
+
+.pdf-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 枠いっぱいに表示 */
+    display: block;
+}
+
+/* ホバー時のオーバーレイ（暗くしてボタンを表示） */
+.pdf-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.pdf-card:hover .pdf-overlay {
+    opacity: 1;
+}
+
+.view-btn {
+    background: var(--accent-color);
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transform: translateY(10px);
+    transition: transform 0.3s;
+}
+
+.pdf-card:hover .view-btn {
+    transform: translateY(0);
+}
+
+/* ファイル名エリア */
+.pdf-info {
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-top: 1px solid #333;
+}
+
+.pdf-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color); /* アイコン自体をテーマカラーにする */
+    flex-shrink: 0; /* 縮まないようにする */
+}
+
+.pdf-icon svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.pdf-name {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.4;
+    word-break: break-all; /* 長いファイル名でのレイアウト崩れ防止 */
+}
+
+.pdf-card:hover .pdf-name {
+    color: var(--accent-color); /* ホバー時にファイル名も光らせる */
+}
+
+/* =========================================
+   Achievements Section (Common Integrated)
+   ========================================= */
+
+.achievements-section {
+    margin: 100px 0;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.achievement-card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, border-color 0.3s;
+    
+    /* 左側に太いアクセントライン（変数を参照） */
+    border-left: 6px solid var(--accent-color);
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* --- Header --- */
+.card-header {
+    padding: 24px 30px;
+    border-bottom: 1px solid #333;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.skill-category {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent-color); /* テーマカラー */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.card-header h3 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: var(--text-main);
+}
+
+/* --- Body --- */
+.card-body {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+.card-body h4 {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.card-body ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+/* リストアイテム（Flexboxでボタンを整列） */
+.card-body li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 12px;
+    
+    /* ボタン改行時のレイアウト崩れ防止 */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 12px;
+    
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.card-body li::before {
+    content: "•";
+    color: var(--accent-color); /* テーマカラー */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+.highlight-box {
+    background: var(--bg-faint);
+    padding: 15px 20px; /* 横幅を少し広げてリストの余白を確保 */
+    border-radius: 8px;
+    border: 1px dashed var(--accent-color);
+    opacity: 0.9;
+    
+    /* ▼▼ レイアウト調整 ▼▼ */
+    display: flex;
+    flex-direction: column; /* 要素を縦に積む */
+    align-items: flex-start; /* 左寄せ */
+    gap: 10px; /* 要素間（ラベル、本文、リスト）に均等な隙間を作る */
+}
+
+/* ラベル（Pointなど） */
+.highlight-box .label {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    /* margin-bottom は削除（親のgapで制御するため） */
+}
+
+/* 本文テキスト */
+.highlight-box p {
+    font-size: 0.9rem;
+    color: #eee;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ▼▼ ボックス内のリスト専用スタイル ▼▼ */
+.highlight-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.highlight-box li {
+    /* 親の .card-body li のスタイルをリセット */
+    border: none;
+    padding: 0 0 0 15px; /* 左にドット用の余白 */
+    margin-bottom: 4px; /* 行間を狭めに */
+    
+    /* フォント設定 */
+    font-size: 0.9rem;
+    color: #ddd;
+    line-height: 1.5;
+    
+    /* Flexbox解除（シンプルな表示にするため） */
+    display: block; 
+    position: relative;
+}
+
+.highlight-box li:last-child {
+    margin-bottom: 0; /* 最後の行の余白を消す */
+}
+
+/* リストのドット（アクセントカラー） */
+.highlight-box li::before {
+    content: "▸"; /* 三角矢印で少しテクニカルに（または "•" でもOK） */
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: normal; /* 太字にしない */
+    line-height: 1.5;
+}
+
+/* --- Footer (Outputs) --- */
+.card-footer {
+    padding: 20px 30px;
+    background: #151515;
+    border-top: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.output-label {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.output-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.output-tags span {
+    font-size: 0.8rem;
+    color: #ccc;
+    background: #333;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid #444;
+}
+
+/* --- Source Button (Small) --- */
+.source-btn {
+    /* 以前の margin-left: 8px; は削除（gapが効くため） */
+    margin: 0; 
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px; /* 少し押しやすく調整 */
+    font-size: 0.75rem;
+    font-family: monospace;
+    line-height: 1.2;
+    
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap; /* ボタン内の改行禁止 */
+}
+
+.source-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    transform: translateY(-1px);
+}
+
+.source-btn svg { width: 10px; height: 10px; display: block; }
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .achievements-grid { grid-template-columns: 1fr; }
+    .card-footer { flex-direction: column; align-items: flex-start; }
+}
+
+/* =========================================
+   Image Slider Component (Half-Overlay Arrows)
+   ========================================= */
+
+.slider-section {
+    margin: 80px 0;
+}
+
+/* 外枠（ボタンの基準位置） */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    /* overflow: hidden は削除（ボタンをはみ出させるため） */
+}
+
+/* マスクエリア（中身の切り抜きと装飾を担当） */
+.slider-mask {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* ここではみ出しを隠す */
+    border-radius: 12px;
+    border: 1px solid #333;
+    background: #000;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    padding-bottom: 50px; /* インジケーター用の余白 */
+}
+
+/* トラック */
+.slider-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* スライド画像 */
+.slider-item {
+    min-width: 100%;
+    position: relative;
+}
+
+.slider-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    max-height: 600px;
+}
+
+/* --- 矢印ボタン --- */
+.slider-arrow {
+    position: absolute;
+    /* 垂直位置調整（マスクのpadding分を考慮して中心に） */
+    top: calc(50% - 25px); 
+    transform: translateY(-50%);
+    
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 20; /* マスクより手前に */
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* 影をつけて浮き上がらせる */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.slider-arrow:hover {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+}
+
+/* ▼▼ 位置調整：ボタン幅(44px)の半分だけ外に出す ▼▼ */
+.slider-arrow.prev { 
+    left: -22px; 
+}
+.slider-arrow.next { 
+    right: -22px; 
+}
+
+/* --- インジケーター --- */
+.slider-indicators {
+    position: absolute;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 2px solid #555; 
+    background: #333;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s;
+}
+
+.indicator.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .slider-arrow { display: none; }
+    .slider-mask { padding-bottom: 40px; }
+    .slider-indicators { bottom: 15px; }
+}
+
+/* =========================================
+   Large Details Accordion (修正版: クリック範囲制限)
+   ========================================= */
+
+.details-wrapper {
+    margin: 60px 0;
+    border-top: 1px solid #333;
+}
+
+/* アコーディオンの開閉ボタン（概要） */
+.details-summary {
+    list-style: none;
+    cursor: pointer;
+    
+    /* ▼▼▼ ここが修正ポイント ▼▼▼ */
+    /* pointer-eventsの制御はやめ、サイズを縮めて範囲を制限する */
+    width: fit-content; /* 中身（ボタン）の幅に合わせる */
+    margin: 80px auto;  /* 上下の余白と中央寄せをここで指定 */
+    padding: 0;         /* パディングをなくす */
+    /* ▲▲▲ ここまで ▲▲▲ */
+    
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.details-summary::-webkit-details-marker {
+    display: none;
+}
+
+/* ボタンの外観 */
+.btn-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 40px;
+    border-radius: 50px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    
+    /* 1. ボーダーの太さを確保 */
+    border: 2px solid transparent;
+    
+    /* 2. 背景設定
+       上層: 中身（黒）
+       下層: 虹色グラデーション（★ここがポイント：同じ虹を2回繰り返して記述します）
+    */
+    background-image: 
+        linear-gradient(var(--card-bg), var(--card-bg)),
+        linear-gradient(125deg, 
+            #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000, /* 1周目 */
+            #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000  /* 2周目 */
+        );
+    
+    /* 3. 背景の描画範囲 */
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    
+    /* 4. サイズ設定
+       虹色の横幅を「200%」にします。
+       これにより、「1周目」がボタンの幅に、「2周目」がはみ出し部分になります。
+    */
+    background-size: 100% 100%, 235% 100%;
+    
+    /* 5. アニメーション */
+    animation: gamingLight 3s linear infinite;
+    
+    /* 発光 */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* アニメーション定義 */
+@keyframes gamingLight {
+    /* 開始: 左端（1周目が見えている状態） */
+    0% { background-position: 0 0, 0 0; }
+    
+    /* 終了: 右端（2周目が見えている状態） 
+       1周目と2周目は同じ柄なので、ここで0%にパッと戻っても人間の目には連続して見えます
+    */
+    100% { background-position: 0 0, 100% 0; }
+}
+
+/* ホバー時の挙動 */
+.btn-read-more:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+    color: #fff;
+}
+
+/* --- テキストの表示切り替え --- */
+.btn-text-close { display: none; }
+
+/* 開いた時の状態 */
+.details-wrapper[open] .btn-read-more {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: none;
+    animation: none;
+}
+
+.details-wrapper[open] .btn-text-open { 
+    display: none; 
+    width: 170px;
+    text-align: center;
+}
+.details-wrapper[open] .btn-text-close { 
+    display: inline; 
+    width: 170px;
+    text-align: center;
+}
+
+/* --- アイコン --- */
+.icon-plus {
+    position: relative;
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+}
+
+.icon-plus::before, .icon-plus::after {
+    content: ''; 
+    position: absolute;
+    background-color: currentColor;
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+}
+
+.icon-plus::before { width: 100%; height: 2px; }
+.icon-plus::after { width: 2px; height: 100%; transition: transform 0.3s; }
+
+.details-wrapper[open] .icon-plus::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* --- アコーディオンの中身（全幅背景デザイン） --- */
+/* ※ここは前回の修正のまま維持してください */
+.details-content {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: max(20px, calc(50vw - 500px)); 
+    padding-right: max(20px, calc(50vw - 500px));
+    background-color: #0d0d0d;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    border-top: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    box-shadow: inset 0 20px 50px rgba(0,0,0,0.8);
+    animation: expandArea 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-origin: top;
+}
+
+@keyframes expandArea {
+    from { opacity: 0; transform: scaleY(0.95); }
+    to { opacity: 1; transform: scaleY(1); }
+}
+
+.internal-close-container {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* 薄い区切り線 */
+}
+
+.internal-close-btn {
+    background: none;
+    border: none;
+    color: #888; /* 控えめなグレー */
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-underline-offset: 4px;
+    transition: color 0.3s;
+    
+    /* アイコンとの整列 */
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.internal-close-btn:hover {
+    color: var(--accent-color); /* ホバー時はテーマカラーに */
+}
+
+/* 矢印アイコン */
+.icon-up {
+    font-size: 1.1rem;
+    transition: transform 0.3s;
+}
+
+.internal-close-btn:hover .icon-up {
+    transform: translateY(-3px); /* ふわっと上がる演出 */
 }

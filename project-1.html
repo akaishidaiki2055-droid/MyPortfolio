@@ -48,11 +48,18 @@
         <!-- クライアント -->
         <section class="product-context-section" style="margin-top: 100px; padding-bottom: 0px;">
             <div class="context-card">
-                <div class="context-header">
-                    <span class="context-label">About Product</span>
-                    <h2>ヘルスケアアプリ「HELPO」とは</h2>
-                </div>
-                <div class="context-body">
+                
+                <div class="context-col-text">
+                    <div class="context-header">
+                        <span class="context-label">About Product</span>
+                        <h2>ヘルスケアアプリ「HELPO」</h2>
+                    </div>
+                    
+                    <p class="context-desc">
+                        24時間365日、医師・看護師・薬剤師などの医療専門チームにチャットで相談できるヘルスケアアプリ。<br>
+                        オンライン診療や処方薬の配送、歩数計などの健康管理機能も備えた「スマホ上の病院・薬局」のような総合プラットフォーム。
+                    </p>
+
                     <dl class="context-info">
                         <div class="info-row">
                             <dt>Client</dt>
@@ -63,19 +70,18 @@
                             <dd>「未病」から「治療」までをワンストップでサポートし、心理的な安心を提供する。</dd>
                         </div>
                     </dl>
-                    <p class="context-desc">
-                        24時間365日、医師・看護師・薬剤師などの医療専門チームにチャットで相談できるヘルスケアアプリ。
-                        オンライン診療や処方薬の配送、歩数計などの健康管理機能も備えた「スマホ上の病院・薬局」のような総合プラットフォーム。
-                    </p>
                 </div>
-                <div class="context-visual">
+
+                <div class="context-col-visual">
                     <div class="phone-frame">
-                    <div class="phone-notch"></div>
+                        <div class="phone-notch"></div>
                         <div class="phone-screen">
                             <img src="img/common/app-screen.png" alt="HELPO App Screen" onerror="this.style.display='none'">
+                            <div class="screen-placeholder">App Screen</div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -83,13 +89,13 @@
         <section class="bento-section" style="padding-top: 0px;">
             <div class="bento-grid">
                 <!-- 自分の役割 -->
-                <div class="bento-card span-2">
+                <div class="bento-card">
                     <h3>Role</h3>
-                    <h4>UX Researcher / UX Strategist</h4>
-                    <span style="font-size: 0.9rem; color: #888; display:block; margin-top:5px;">調査設計、実査、分析、戦略策定、UI設計</span>
+                    <h4>UX Researcher / UX Designer</h4>
+                    <span style="font-size: 0.9rem; color: #888; display:block; margin-top:5px;">リサーチ設計, デプスインタビュー実施, 定性分析, セグメント定義, UX戦略立案, 実装要件定義</span>
                 </div>
                 <!-- プロジェクトメンバーの役割/体制 -->
-                <div class="bento-card span-2">
+                <div class="bento-card">
                     <h3>Team</h3>
                     <h4>Experience Design Dept.</h4>
                     <span style="font-size: 0.9rem; color: #888; display:block; margin-top:5px;">HT: 河本さき子, 鈴木宗一郎<br>MEM: 高橋良太, 杉浦光, 赤石大樹</span>
@@ -106,10 +112,25 @@
                     <span style="font-size: 0.9rem; color: #888;">Target: 予備軍 (N=14)</span>
                 </div>
                 <!-- 最終成果物 -->
-                <div class="bento-card span-2">
-                    <h3>Final Output</h3>
-                    <h4>Research Reports, etc.</h4>
-                    <span style="font-size: 0.9rem; color: #888; display:block; margin-top:5px;">ユーザー調査レポート, 行動変容UX戦略案, 介入プログラムのUIデザイン案</span>
+                <div class="bento-card span-full">
+                    <h3>Final Deliverables</h3>
+                    <div class="deliverables-group">
+                        <div class="deliverable-item">
+                            <h4>RESEARCH</h4>
+                            <p>ユーザー調査報告書</p>
+                            <span style="font-size: 0.9rem; color: #888; display:block; margin-top:5px;">インサイト・セグメント分析</span>
+                        </div>
+                        <div class="deliverable-item">
+                            <h4>STRATEGY</h4>
+                            <p>UX戦略提案書</p>
+                            <span style="font-size: 0.9rem; color: #888; display:block; margin-top:5px;">インサイト・セグメント分析</span>
+                        </div>
+                        <div class="deliverable-item">
+                            <h4>GUIDELINES</h4>
+                            <p>実装方針案</p>
+                            <span style="font-size: 0.9rem; color: #888; display:block; margin-top:5px;">共通基盤・個別チューニング要件</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -126,6 +147,66 @@
                 </div>
             </div>
         </section>
+
+        <!-- ▼▼ Infographic Slider Section ▼▼ -->
+        <section class="slider-section">
+            <h2 class="section-title">Project Overview</h2>
+            <p style="margin-bottom: 30px; color: #ccc;">
+                プロジェクトの全体像と改善プロセスを図解で整理しました。（スライドしてご覧ください）
+            </p>
+
+            <!-- スライダー本体 -->
+            <div class="slider-container" id="projectSlider">
+                
+                <div class="slider-mask">
+                    <div class="slider-track">
+                        <div class="slider-item">
+                            <img src="img/project-1/info/project1-info_01.webp" alt="Slide 1" onerror="this.src='https://placehold.co/800x450/1a1a1a/4D8BFF?text=Infographic+1'">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/project-1/info/project1-info_02.webp" alt="Slide 2" onerror="this.src='https://placehold.co/800x450/1a1a1a/4D8BFF?text=Infographic+1'">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/project-1/info/project1-info_03.webp" alt="Slide 3" onerror="this.src='https://placehold.co/800x450/1a1a1a/4D8BFF?text=Infographic+1'">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/project-1/info/project1-info_04.webp" alt="Slide 4" onerror="this.src='https://placehold.co/800x450/1a1a1a/4D8BFF?text=Infographic+1'">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/project-1/info/project1-info_05.webp" alt="Slide 5" onerror="this.src='https://placehold.co/800x450/1a1a1a/4D8BFF?text=Infographic+1'">
+                        </div>
+                        <div class="slider-item">
+                            <img src="img/project-1/info/project1-info_06.webp" alt="Slide 6" onerror="this.src='https://placehold.co/800x450/1a1a1a/4D8BFF?text=Infographic+1'">
+                        </div>
+                    </div>
+
+                    <div class="slider-indicators">
+                        <button class="indicator active" data-index="0"></button>
+                        <button class="indicator" data-index="1"></button>
+                        <button class="indicator" data-index="2"></button>
+                        <button class="indicator" data-index="3"></button>
+                        <button class="indicator" data-index="4"></button>
+                        <button class="indicator" data-index="5"></button>
+                    </div>
+                </div>
+                <button class="slider-arrow prev" aria-label="前のスライド">❮</button>
+                <button class="slider-arrow next" aria-label="次のスライド">❯</button>
+
+            </div>
+        </section>
+        <!-- ▲▲ 追加ここまで ▲▲ -->
+
+    <!-- コンテンツアコーディオンここから -->
+        <details class="details-wrapper">
+            <summary class="details-summary">
+                <span class="btn-read-more">
+                    <span class="btn-text-open">View Full Process</span>
+                    <span class="btn-text-close">Close Details</span>
+                    <span class="icon-plus"></span>
+                </span>
+            </summary>
+
+            <div class="details-content">
 
         <!-- Output -->
         <section class="process-section">
@@ -255,6 +336,57 @@
                 </h3>
                 <p><strong>高意欲層</strong>には「頑張れ」という励ましが逆効果（プレッシャー）になり、逆に<strong>低意欲層</strong>には「健康の重要性」を説いても響かないことが分かりました。セグメントごとに異なる「言葉」が必要です。</p>
             </div>
+
+            <!-- PDFエリア -->
+            <div class="presentation-section" style="margin-bottom: 0px;">
+                <h4 style="font-size: 1.3rem; margin-bottom: 20px; color: var(--text-main); font-weight: bold;">
+                    Investigation Reports
+                </h4>
+                <p style="margin-bottom: 30px; color: #ccc;">
+                    実際の調査報告資料（抜粋）をご覧いただけます。
+                </p>
+                
+                <div class="pdf-grid">
+                    <a href="docs/report_intervention_20250722.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-thumb">
+                            <img src="img/project-1/pdf_thumbnail_01.webp" alt="Report 1" onerror="this.style.display='none'">
+                            <div class="pdf-overlay"><span class="view-btn">View PDF</span></div>
+                        </div>
+                        <div class="pdf-info">
+                            <span class="pdf-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <line x1="10" y1="9" x2="8" y2="9"></line>
+                                </svg>
+                            </span>
+                            <span class="pdf-name">【介入型】調査資料_20250722.pdf</span>
+                        </div>
+                    </a>
+
+                    <a href="docs/report_intervention_20250728_progress.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-thumb">
+                            <img src="img/project-1/pdf_thumbnail_02.webp" alt="Report 2" onerror="this.style.display='none'">
+                            <div class="pdf-overlay"><span class="view-btn">View PDF</span></div>
+                        </div>
+                        <div class="pdf-info">
+                            <span class="pdf-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <line x1="10" y1="9" x2="8" y2="9"></line>
+                                </svg>
+                            </span>
+                            <span class="pdf-name">【介入型】調査資料_20250728_<br>事業進捗報告会用.pdf</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
         </section>
 
         <!-- Output -->
@@ -310,6 +442,17 @@
                 </ul>
             </div>
         </section>
+
+        <div class="internal-close-container">
+                    <button type="button" class="internal-close-btn">
+                        Close Details
+                        <span class="icon-up">↑</span>
+                    </button>
+        </div>
+
+        </div>
+        </details>
+    <!-- コンテンツアコーディオンここまで -->
         
         <!-- 各スキルに対して -->
         <section class="achievements-section">
@@ -326,12 +469,15 @@
                     <div class="card-body">
                         <h4>実現したこと</h4>
                         <ul>
-                            <li>生活習慣病予備軍14名へのデプスインタビュー設計・実施</li>
-                            <li>「意識×行動」の2軸スクリーニングによる対象者セグメント化</li>
+                            <li>仮説に基づき「健康関心度（意欲）」と「実行力（行動）」の2軸によるスクリーニング基準を設計し、対象者を4象限に分類してリクルーティングを実施。</li>
+                            <li>生活習慣病予備軍および一般層計14名に対し、70分のデプスインタビューを実施。</li>
                         </ul>
                         <div class="highlight-box">
                             <span class="label">Point</span>
-                            <p>主観的な「やる気」と客観的な「行動」を掛け合わせ、ユーザーの実態を立体的に捉える調査を設計しました。</p>
+                            <ul>
+                                <li>単なる属性（年齢・性別）ではなく、「行動変容ステージ」と「心理的ハードル」に基づいた精緻な対象者選定を行い、リサーチの精度を高めました。</li>
+                                <li>インタビューでは「3視点（感情・環境・周囲の影響）」を用いた深掘りを行い、表面的な建前ではない本音（インサイト）を抽出しました。</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -339,32 +485,35 @@
                         <div class="output-tags">
                             <span>スクリーニング調査票</span>
                             <span>インタビューガイド</span>
-                            <span>発話録</span>
+                            <span>発話録・分析シート</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="achievement-card">
                     <div class="card-header">
-                        <span class="skill-category">Analysis & Modeling</span>
-                        <h3>分析・モデリング</h3>
+                        <span class="skill-category">Modeling</span>
+                        <h3>ユーザーモデリング</h3>
                     </div>
                     <div class="card-body">
                         <h4>実現したこと</h4>
                         <ul>
-                            <li>インタビュー結果を4象限マトリクスに構造化</li>
-                            <li>行動変容フェーズごとの心理的障壁（挫折要因）を特定</li>
+                            <li>インタビュー結果から、ユーザーを静的なペルソナではなく、動的な「4つのセグメント（高意欲×高行動、高意欲×低行動、低意欲×高行動、低意欲×低行動）」に再定義しました。</li>
+                            <li>各セグメント特有の「挫折パターン（完璧主義による疲弊、意味づけ不足による離脱など）」を構造化しました。</li>
                         </ul>
                         <div class="highlight-box">
                             <span class="label">Point</span>
-                            <p>「高意欲層の完璧主義」など、セグメントごとの決定的なインサイトをモデル化し、戦略の基礎を築きました。</p>
+                            <ul>
+                                <li>「意欲はあるが続かない層」と「意欲がなくやらされている層」の違いを明確化し、画一的なペルソナでは見落とされがちな「継続阻害のメカニズム」を可視化しました。</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="card-footer">
                         <span class="output-label">Outputs:</span>
                         <div class="output-tags">
-                            <span>セグメント定義書</span>
-                            <span>行動変容フェーズ分析表</span>
+                            <span>4象限セグメントマップ</span>
+                            <span>カスタマージャーニーマップ</span>
+                            <span>共感マップ</span>
                         </div>
                     </div>
                 </div>
@@ -372,24 +521,28 @@
                 <div class="achievement-card">
                     <div class="card-header">
                         <span class="skill-category">Strategy</span>
-                        <h3>コンセプト定義・戦略</h3>
+                        <h3>UX戦略・サービスデザイン</h3>
                     </div>
                     <div class="card-body">
                         <h4>実現したこと</h4>
                         <ul>
-                            <li>「ハイブリッド型UX戦略（共通基盤×個別適応）」の策定</li>
-                            <li>「管理」から「許し（支援）」への体験コンセプト転換</li>
+                            <li>全ユーザー共通の「行動変容基盤（ログ・可視化）」と、セグメント別に最適化する「チューニング層（語り口・頻度・提案粒度）」を分けるハイブリッドな実装モデルを策定しました。</li>
+                            <li>健診結果からの介入（WellGate）と、日常利用からの介入という2つのユースケースにおける体験フローを設計しました。</li>
                         </ul>
                         <div class="highlight-box">
                             <span class="label">Point</span>
-                            <p>機能要件だけでなく、ユーザーの「罪悪感」に寄り添った、実装可能な戦略方針を立案しました。</p>
+                            <ul>
+                                <li>開発工数（共通化）とUX効果（パーソナライズ）のトレードオフを解消する現実的な実装戦略を立案しました。</li>
+                                <li>「恐怖訴求（ホラーストーリー）」と「称賛訴求」をユーザータイプによって使い分けるなど、行動経済学（ナッジ）の視点を取り入れた戦略を提示しました。</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="card-footer">
                         <span class="output-label">Outputs:</span>
                         <div class="output-tags">
                             <span>UXコンセプトシート</span>
-                            <span>実装方針案</span>
+                            <span>サービスブループリント</span>
+                            <span>実装要件定義書</span>
                         </div>
                     </div>
                 </div>
@@ -402,19 +555,58 @@
                     <div class="card-body">
                         <h4>実現したこと</h4>
                         <ul>
-                            <li>心理的負担を下げる「リカバリー導線」の設計</li>
-                            <li>セグメント別にトーンを変化させるフィードバックUI</li>
+                            <li>
+                                <span>ユーザーの「初期アンケート回答」と「日々のアプリ利用ログ」から、システムが自動的にセグメントを判定・更新するロジックを設計。</span>
+                                <a href="docs/report_intervention_20250728_progress.pdf#page=18" target="_blank" class="source-btn" title="調査概要を見る">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                                    p.18
+                                </a>
+                                <a href="docs/report_intervention_20250728_progress.pdf#page=19" target="_blank" class="source-btn" title="調査概要を見る">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                                    p.19
+                                </a>
+                                <a href="docs/report_intervention_20250728_progress.pdf#page=38" target="_blank" class="source-btn" title="調査概要を見る">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                                    p.38
+                                </a>
+                                <a href="docs/report_intervention_20250728_progress.pdf#page=39" target="_blank" class="source-btn" title="調査概要を見る">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                                    p.39
+                                </a>
+                            </li>
+                            <li>
+                                <span>「挫折（中断）」をシステムが検知した際に、ユーザーに罪悪感を与えずに再開を促す「リスタート・ナッジ」のインタラクションを考案しました。</span>
+                                <a href="docs/report_intervention_20250728_progress.pdf#page=19" target="_blank" class="source-btn" title="調査概要を見る">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                                    p.19
+                                </a>
+                                <a href="docs/report_intervention_20250728_progress.pdf#page=21" target="_blank" class="source-btn" title="調査概要を見る">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                                    p.21
+                                </a>
+                                <a href="docs/report_intervention_20250728_progress.pdf#page=22" target="_blank" class="source-btn" title="調査概要を見る">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                                    p.22
+                                </a>
+                                <a href="docs/report_intervention_20250728_progress.pdf#page=39" target="_blank" class="source-btn" title="調査概要を見る">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                                    p.39
+                                </a>
+                            </li>
                         </ul>
                         <div class="highlight-box">
                             <span class="label">Point</span>
-                            <p>「記録が途切れる恐怖」を取り除くロジックを、具体的な画面遷移とインタラクションに落とし込みました。</p>
+                            <ul>
+                                <li>画面上のUIだけでなく、バックグラウンドで動く「ユーザー状態判定ロジック」までを含めた体験設計を行いました。</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="card-footer">
                         <span class="output-label">Outputs:</span>
                         <div class="output-tags">
-                            <span>Figmaプロトタイプ</span>
                             <span>画面遷移図</span>
+                            <span>UIワイヤーフレーム</span>
+                            <span>ロジックフロー図</span>
                         </div>
                     </div>
                 </div>
