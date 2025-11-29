@@ -2083,7 +2083,7 @@ footer p {
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 900px;
+    /* max-width: 900px; */
     margin: 0 auto;
     /* overflow: hidden は削除（ボタンをはみ出させるため） */
 }
@@ -2097,7 +2097,7 @@ footer p {
     border: 1px solid #333;
     background: #000;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    padding-bottom: 50px; /* インジケーター用の余白 */
+    /* padding-bottom: 50px; */
 }
 
 /* トラック */
@@ -2125,7 +2125,7 @@ footer p {
 .slider-arrow {
     position: absolute;
     /* 垂直位置調整（マスクのpadding分を考慮して中心に） */
-    top: calc(50% - 25px); 
+    top: 50%;
     transform: translateY(-50%);
     
     background: rgba(0, 0, 0, 0.5);
@@ -2153,16 +2153,16 @@ footer p {
 
 /* ▼▼ 位置調整：ボタン幅(44px)の半分だけ外に出す ▼▼ */
 .slider-arrow.prev { 
-    left: -22px; 
+    left: -16px; 
 }
 .slider-arrow.next { 
-    right: -22px; 
+    right: -16px; 
 }
 
 /* --- インジケーター --- */
 .slider-indicators {
     position: absolute;
-    bottom: 20px; 
+    bottom: -30px; 
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -2188,9 +2188,26 @@ footer p {
 
 /* スマホ対応 */
 @media (max-width: 600px) {
-    .slider-arrow { display: none; }
-    .slider-mask { padding-bottom: 40px; }
-    .slider-indicators { bottom: 15px; }
+    .slider-arrow { 
+        /* display: none;  */
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    /* .slider-mask { padding-bottom: 40px; } */
+
+    .slider-indicators { 
+        bottom: -30px; 
+    }
+
+    .slider-indicators {
+        gap: 15px;
+    }
+
+    .indicator {
+        width: 15px; height: 15px;
+    }
 }
 
 /* =========================================
@@ -2200,6 +2217,7 @@ footer p {
 .details-wrapper {
     margin: 60px 0;
     border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
 }
 
 /* アコーディオンの開閉ボタン（概要） */

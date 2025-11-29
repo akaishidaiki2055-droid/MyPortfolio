@@ -157,7 +157,14 @@
 
             <!-- スライダー本体 -->
             <div class="slider-container" id="projectSlider">
-                
+                <div class="slider-indicators">
+                        <button class="indicator active" data-index="0"></button>
+                        <button class="indicator" data-index="1"></button>
+                        <button class="indicator" data-index="2"></button>
+                        <button class="indicator" data-index="3"></button>
+                        <button class="indicator" data-index="4"></button>
+                        <button class="indicator" data-index="5"></button>
+                    </div>
                 <div class="slider-mask">
                     <div class="slider-track">
                         <div class="slider-item">
@@ -179,15 +186,6 @@
                             <img src="img/project-1/info/project1-info_06.webp" alt="Slide 6" onerror="this.src='https://placehold.co/800x450/1a1a1a/4D8BFF?text=Infographic+1'">
                         </div>
                     </div>
-
-                    <div class="slider-indicators">
-                        <button class="indicator active" data-index="0"></button>
-                        <button class="indicator" data-index="1"></button>
-                        <button class="indicator" data-index="2"></button>
-                        <button class="indicator" data-index="3"></button>
-                        <button class="indicator" data-index="4"></button>
-                        <button class="indicator" data-index="5"></button>
-                    </div>
                 </div>
                 <button class="slider-arrow prev" aria-label="前のスライド">❮</button>
                 <button class="slider-arrow next" aria-label="次のスライド">❯</button>
@@ -195,6 +193,56 @@
             </div>
         </section>
         <!-- ▲▲ 追加ここまで ▲▲ -->
+
+        <!-- 【最終成果物】PDFエリア -->
+        <section class="process-section">
+            <h2 class="section-title">Final Deliverables</h2>
+            <div class="presentation-section" style="margin-bottom: 0px; margin-top: 0px;">
+                <p style="margin-bottom: 30px; color: #ccc;">
+                    実際の調査報告資料（抜粋）をご覧いただけます。
+                </p>
+                
+                <div class="pdf-grid">
+                    <a href="docs/report_intervention_20250722.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-thumb">
+                            <img src="img/project-1/pdf_thumbnail_01.webp" alt="Report 1" onerror="this.style.display='none'">
+                            <div class="pdf-overlay"><span class="view-btn">View PDF</span></div>
+                        </div>
+                        <div class="pdf-info">
+                            <span class="pdf-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <line x1="10" y1="9" x2="8" y2="9"></line>
+                                </svg>
+                            </span>
+                            <span class="pdf-name">【介入型】調査資料_20250722.pdf</span>
+                        </div>
+                    </a>
+
+                    <a href="docs/report_intervention_20250728_progress.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-thumb">
+                            <img src="img/project-1/pdf_thumbnail_02.webp" alt="Report 2" onerror="this.style.display='none'">
+                            <div class="pdf-overlay"><span class="view-btn">View PDF</span></div>
+                        </div>
+                        <div class="pdf-info">
+                            <span class="pdf-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <line x1="10" y1="9" x2="8" y2="9"></line>
+                                </svg>
+                            </span>
+                            <span class="pdf-name">【介入型】調査資料_20250728_<br>事業進捗報告会用.pdf</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
     <!-- コンテンツアコーディオンここから -->
         <details class="details-wrapper">
@@ -335,56 +383,6 @@
                     Key Insight: <br class="sp-br">挫折の原因は「共通」ではない
                 </h3>
                 <p><strong>高意欲層</strong>には「頑張れ」という励ましが逆効果（プレッシャー）になり、逆に<strong>低意欲層</strong>には「健康の重要性」を説いても響かないことが分かりました。セグメントごとに異なる「言葉」が必要です。</p>
-            </div>
-
-            <!-- PDFエリア -->
-            <div class="presentation-section" style="margin-bottom: 0px;">
-                <h4 style="font-size: 1.3rem; margin-bottom: 20px; color: var(--text-main); font-weight: bold;">
-                    Investigation Reports
-                </h4>
-                <p style="margin-bottom: 30px; color: #ccc;">
-                    実際の調査報告資料（抜粋）をご覧いただけます。
-                </p>
-                
-                <div class="pdf-grid">
-                    <a href="docs/report_intervention_20250722.pdf" target="_blank" class="pdf-card">
-                        <div class="pdf-thumb">
-                            <img src="img/project-1/pdf_thumbnail_01.webp" alt="Report 1" onerror="this.style.display='none'">
-                            <div class="pdf-overlay"><span class="view-btn">View PDF</span></div>
-                        </div>
-                        <div class="pdf-info">
-                            <span class="pdf-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                                    <line x1="10" y1="9" x2="8" y2="9"></line>
-                                </svg>
-                            </span>
-                            <span class="pdf-name">【介入型】調査資料_20250722.pdf</span>
-                        </div>
-                    </a>
-
-                    <a href="docs/report_intervention_20250728_progress.pdf" target="_blank" class="pdf-card">
-                        <div class="pdf-thumb">
-                            <img src="img/project-1/pdf_thumbnail_02.webp" alt="Report 2" onerror="this.style.display='none'">
-                            <div class="pdf-overlay"><span class="view-btn">View PDF</span></div>
-                        </div>
-                        <div class="pdf-info">
-                            <span class="pdf-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                                    <line x1="10" y1="9" x2="8" y2="9"></line>
-                                </svg>
-                            </span>
-                            <span class="pdf-name">【介入型】調査資料_20250728_<br>事業進捗報告会用.pdf</span>
-                        </div>
-                    </a>
-                </div>
             </div>
 
         </section>
