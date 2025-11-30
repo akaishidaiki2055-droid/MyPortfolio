@@ -34,7 +34,7 @@ a {
     color: inherit; 
 }
 
-p, li, ul, dt, dd, span{
+p, a, li, ul, dt, dd, span{
     text-align: justify;
     font-feature-settings: "palt";
     letter-spacing: 0.04em;
@@ -844,6 +844,10 @@ footer p {
     vertical-align: top;
 }
 
+.eval-table tr:last-child td{
+    border-bottom: none;
+}
+
 .rank-badge {
     display: inline-block;
     padding: 2px 8px;
@@ -1338,7 +1342,8 @@ footer p {
 .gallery-grid {
     display: grid;
     gap: 16px; /* アイテム間の隙間 */
-    align-items: start; /* 高さが違っても上揃えにする */
+    /* align-items: start; */
+    align-items: stretch;
 }
 
 /* カラム数の制御クラス */
@@ -1831,16 +1836,96 @@ footer p {
    ========================================= */
 
 .achievements-section {
-    margin: 100px 0;
+    padding: 100px 0;
+    position: relative;
 }
 
+/* ※一応残す */
 .achievements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 30px;
 }
 
+/* タイトル部分は中央寄せコンテナの幅に合わせる */
+.section-header-wrapper {
+    max-width: 1000px; /* コンテナと同じ幅 */
+    margin: 0 auto;
+    padding: 0 20px; /* コンテナと同じ余白 */
+    position: relative;
+}
+
+/* ナビゲーションボタン（PCではタイトルの右側に配置） */
+.ach-nav-buttons {
+    position: absolute;
+    right: 20px;
+    bottom: 20px; /* タイトルエリアの下揃え */
+    display: flex;
+    gap: 10px;
+}
+
+.ach-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background: var(--card-bg);
+    color: var(--text-main);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ach-btn:hover {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+}
+
+/* --- スライダー本体 --- */
+.achievements-slider {
+    /* 画面幅いっぱいに広げる魔法の記述 */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    
+    overflow: hidden; /* スクロールバーを隠す */
+}
+
+.achievements-track {
+    display: flex;
+    gap: 30px;
+    
+    /* 横スクロールを可能にする（バーは隠す） */
+    overflow-x: auto;
+    scroll-behavior: smooth; /* 滑らかに動く */
+    
+    /* スクロールバー非表示（Chrome/Safari/Edge） */
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;  /* Firefox */
+    
+    /* ▼▼ 重要：1枚目をコンテナの左端に揃えるための余白計算 ▼▼ */
+    /* (画面幅 - 1000px) ÷ 2 ＝ 左の余白 */
+    padding-left: max(20px, calc(50vw - 500px));
+    padding-right: max(20px, calc(50vw - 500px));
+    padding-bottom: 40px; /* 下の影が見えるように余白 */
+}
+
+/* スクロールバー非表示（Webkit） */
+.achievements-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- カードデザイン --- */
 .achievement-card {
+    /* カードの幅を固定（縮まないようにする） */
+    flex: 0 0 485px;
+    width: 485px;
+
+    /* 既存のデザイン維持 */
     background: var(--card-bg);
     border: 1px solid #333;
     border-radius: 12px;
@@ -1853,11 +1938,11 @@ footer p {
     border-left: 6px solid var(--accent-color);
 }
 
-.achievement-card:hover {
+/* .achievement-card:hover {
     transform: translateY(-5px);
     border-color: #555;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
+} */
 
 /* --- Header --- */
 .card-header {
@@ -1891,7 +1976,6 @@ footer p {
 .card-body h4 {
     font-size: 1rem;
     color: #ccc;
-    margin-bottom: 15px;
     border-bottom: 1px solid #444;
     padding-bottom: 5px;
     display: inline-block;
@@ -2071,12 +2155,38 @@ footer p {
     .card-footer { flex-direction: column; align-items: flex-start; }
 }
 
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .ach-nav-buttons { display: none; /* スマホではスワイプ推奨なのでボタン消す */ }
+    
+    .achievement-card {
+        flex: 0 0 85vw; /* 画面幅の85% */
+        width: 85vw;
+    }
+    
+    .achievements-track {
+        padding-left: 20px; /* スマホ用の余白 */
+        padding-right: 20px;
+        align-items: flex-start;
+    }
+
+    .card-header{
+        padding: 24px 20px;
+    }
+    .card-body{
+        padding: 24px 20px;
+    }
+    .card-footer{
+        padding: 20px 20px;
+    }
+}
+
 /* =========================================
    Image Slider Component (Half-Overlay Arrows)
    ========================================= */
 
 .slider-section {
-    margin: 80px 0;
+    padding: 100px 0;
 }
 
 /* 外枠（ボタンの基準位置） */
@@ -2153,10 +2263,10 @@ footer p {
 
 /* ▼▼ 位置調整：ボタン幅(44px)の半分だけ外に出す ▼▼ */
 .slider-arrow.prev { 
-    left: -16px; 
+    left: -22px; 
 }
 .slider-arrow.next { 
-    right: -16px; 
+    right: -22px; 
 }
 
 /* --- インジケーター --- */
@@ -2207,6 +2317,12 @@ footer p {
 
     .indicator {
         width: 15px; height: 15px;
+    }
+    .slider-arrow.prev { 
+        left: -16px; 
+    }
+    .slider-arrow.next { 
+        right: -16px; 
     }
 }
 
@@ -2409,4 +2525,121 @@ footer p {
 
 .internal-close-btn:hover .icon-up {
     transform: translateY(-3px); /* ふわっと上がる演出 */
+}
+
+/* =========================================
+   Table of Contents (Numbered List Style)
+   ========================================= */
+
+.toc-section {
+    margin-top: 80px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ▼▼ 追加：INDEXラベルのデザイン ▼▼ */
+.toc-section::before {
+    content: 'INDEX';
+    display: block;
+    font-family: monospace; /* 等幅フォントでシステムっぽく */
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--accent-color); /* テーマカラー */
+    letter-spacing: 0.2em;
+    margin-bottom: 10px; /* リストとの間隔 */
+    opacity: 0.7; /* 控えめにする */
+}
+
+.toc-list {
+    display: flex;
+    flex-wrap: wrap; /* 画面幅が狭いPCでも折り返す */
+    column-gap: 25px; /* 項目間の余白 */
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    
+    /* CSSカウンターの初期化（番号を振るため） */
+    counter-reset: toc-counter;
+}
+
+.toc-list li {
+    /* カウンターを進める */
+    counter-increment: toc-counter;
+}
+
+.toc-list a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    padding: 5px 0; /* ホバー時の位置ズレ防止の余白 */
+}
+
+/* 自動で番号を表示する設定 (01. 02. ...) */
+.toc-list a::before {
+    content: "0" counter(toc-counter) ".";
+    color: var(--accent-color); /* テーマカラー */
+    font-family: monospace;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    opacity: 0.8;
+}
+
+/* ホバー時のデザイン */
+.toc-list a:hover {
+    color: var(--text-main);
+    transform: translateY(-2px);
+}
+
+/* --- スマホ対応（縦積みリスト） --- */
+@media (max-width: 600px) {
+    .toc-section {
+        margin-bottom: 60px;
+        border-bottom: none; /* スマホでは区切り線を消してスッキリさせる */
+    }
+
+    /* SPでのラベル位置調整 */
+    .toc-section::before {
+        margin-bottom: 10px;
+        font-size: 1.0rem;
+        padding-left: 15px;
+    }
+
+    .toc-list {
+        flex-direction: column; /* 縦積みに変更 */
+        gap: 0; /* 隙間をなくしてボーダーで区切る */
+        align-items: stretch; /* 横幅いっぱいに */
+        background: var(--card-bg); /* 背景色をつけてカード化 */
+        border-radius: 12px;
+        border: 1px solid #333;
+        overflow: hidden;
+    }
+
+    .toc-list li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* リストの区切り線 */
+    }
+
+    .toc-list li:last-child {
+        border-bottom: none; /* 最後の線は消す */
+    }
+
+    .toc-list a {
+        display: flex; /* 横いっぱいに広げる */
+        padding: 16px 20px; /* タップしやすい広めの余白 */
+        color: var(--text-main); /* スマホでは最初から白文字で見やすく */
+    }
+    
+    /* スマホでは番号の後ろに少し余白を足す */
+    .toc-list a::before {
+        margin-right: 12px;
+        font-size: 1rem;
+    }
+    
+    /* タップした瞬間のフィードバック */
+    .toc-list a:active {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
 }

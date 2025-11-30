@@ -45,6 +45,18 @@
             <p>生活習慣病予備軍に対する介入施策。画一的なアドバイスではなく、ユーザーの心理フェーズに合わせた「ハイブリッド型UX」による継続率改善の提案。</p>
         </section>
 
+        <!-- 目次 -->
+        <nav class="toc-section">
+            <ul class="toc-list">
+                <li><a href="#Background & Purpose">Background & Purpose</a></li>
+                <li><a href="#Project Overview">Project Overview</a></li>
+                <li><a href="#Final Deliverables">Final Deliverables</a></li>
+                <li><a href="#Detail">Detail</a></li>
+                <li><a href="#Achievements by Skill">Achievements by Skill</a></li>
+                <li><a href="#Skills">Skills</a></li>
+            </ul>
+        </nav>
+
         <!-- クライアント -->
         <section class="product-context-section" style="margin-top: 100px; padding-bottom: 0px;">
             <div class="context-card">
@@ -136,7 +148,7 @@
         </section>
 
         <!-- PJの背景/目的 -->
-        <section class="process-section">
+        <section class="process-section" id="Background & Purpose">
             <h2 class="section-title">Background & Purpose</h2>
             <div class="text-block">
                 <h3>「危機感」だけでは、行動は続かない。</h3>
@@ -149,7 +161,7 @@
         </section>
 
         <!-- ▼▼ Infographic Slider Section ▼▼ -->
-        <section class="slider-section">
+        <section class="slider-section" id="Project Overview">
             <h2 class="section-title">Project Overview</h2>
             <p style="margin-bottom: 30px; color: #ccc;">
                 プロジェクトの全体像と改善プロセスを図解で整理しました。（スライドしてご覧ください）
@@ -195,7 +207,7 @@
         <!-- ▲▲ 追加ここまで ▲▲ -->
 
         <!-- 【最終成果物】PDFエリア -->
-        <section class="process-section">
+        <section class="process-section" id="Final Deliverables">
             <h2 class="section-title">Final Deliverables</h2>
             <div class="presentation-section" style="margin-bottom: 0px; margin-top: 0px;">
                 <p style="margin-bottom: 30px; color: #ccc;">
@@ -245,7 +257,7 @@
         </section>
 
     <!-- コンテンツアコーディオンここから -->
-        <details class="details-wrapper">
+        <details class="details-wrapper" id="Detail">
             <summary class="details-summary">
                 <span class="btn-read-more">
                     <span class="btn-text-open">View Full Process</span>
@@ -453,12 +465,18 @@
     <!-- コンテンツアコーディオンここまで -->
         
         <!-- 各スキルに対して -->
-        <section class="achievements-section">
-            <h2 class="section-title">Achievements by Skill</h2>
+        <section class="achievements-section" id="Achievements by Skill">
+            <div class="section-header-wrapper">
+            <h2 class="section-title" style="word-break: break-all;">Achievements by Skill</h2>
             <p style="margin-bottom: 40px; color: #ccc;">
                 本プロジェクトにおける具体的な実践内容とアウトプット
             </p>
-            <div class="achievements-grid">   
+            <div class="ach-nav-buttons">
+                <button class="ach-btn prev" aria-label="前へ">❮</button>
+                <button class="ach-btn next" aria-label="次へ">❯</button>
+            </div>
+            <div class="achievements-slider" id="achievementsSlider">
+                <div class="achievements-track">
                 <div class="achievement-card">
                     <div class="card-header">
                         <span class="skill-category">Research</span>
@@ -608,11 +626,13 @@
                         </div>
                     </div>
                 </div>
+                </div>
+            </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section class="skill-eval-section">
+        <section class="skill-eval-section" id="Skills">
             <!-- スキル定義 -->
             <h2 class="section-title">Skill Matrix</h2>
             <div class="table-scroll-wrapper">
@@ -928,12 +948,12 @@
                             </tr>
                             <tr>
                                 <td>ユーザー調査</td>
-                                <td><span class="rank-badge">R3</span></td>
+                                <td><span class="rank-badge">3R</span></td>
                                 <td>生活習慣病予備軍を対象としたデプスインタビュー（N=14）を設計・実施し、定性情報を収集しているため。</td>
                             </tr>
                             <tr>
                                 <td>ユーザー分析／モデリング</td>
-                                <td><span class="rank-badge">R3</span></td>
+                                <td><span class="rank-badge">3R</span></td>
                                 <td>インタビュー結果を「意欲×実行力」の4象限マトリクスに構造化し、セグメントごとのインサイトを導出しているため。</td>
                             </tr>
                             <tr>
@@ -959,12 +979,12 @@
                             </tr>
                             <tr>
                                 <td>コンセプト定義</td>
-                                <td><span class="rank-badge">R3</span></td>
+                                <td><span class="rank-badge">3R</span></td>
                                 <td>「管理」から「許し（リカバリー）」へというUXコンセプトの転換（Pivot）を定義し、プロダクトの方向性を定めているため。</td>
                             </tr>
                             <tr>
                                 <td>体験設計／ユーザー要求仕様作成</td>
-                                <td><span class="rank-badge">R3</span></td>
+                                <td><span class="rank-badge">3R</span></td>
                                 <td>「Rest Day機能」や「ストリーク維持ロジック」など、ユーザーの心理的ハードルを下げる具体的な体験フローを設計しているため。</td>
                             </tr>
                             <tr>
@@ -1000,7 +1020,7 @@
                             </tr>
                             <tr>
                                 <td>進行管理</td>
-                                <td><span class="rank-badge">R3</span></td>
+                                <td><span class="rank-badge">3R</span></td>
                                 <td>2ヶ月という短期間でのPoC実施に向け、WBSを作成してタスクを細分化。週次で進捗をモニタリングし、遅延リスクを早期に検知・解消することで納期を遵守したため。</td>
                             </tr>
                             <tr>
@@ -1026,17 +1046,17 @@
                             </tr>
                             <tr>
                                 <td>ビジネス課題の特定</td>
-                                <td><span class="rank-badge">R3</span></td>
+                                <td><span class="rank-badge">3R</span></td>
                                 <td>「7日後の継続率12%」という定量的なビジネス課題を特定し、改善目標を設定しているため。</td>
                             </tr>
                             <tr>
                                 <td>プロジェクト設計</td>
-                                <td><span class="rank-badge">R3</span></td>
+                                <td><span class="rank-badge">3R</span></td>
                                 <td>「目的」「ゴール」「対象者（セグメント）」を明確に定義し、どのような手法で課題にアプローチするかという全体の調査設計（Design）が論理的に構築されているため。</td>
                             </tr>
                             <tr>
                                 <td>プロジェクト運営</td>
-                                <td><span class="rank-badge">R3</span></td>
+                                <td><span class="rank-badge">3R</span></td>
                                 <td>設計した計画に基づき、14名の対象者へのインタビュー実査を完遂し、PoC開始までプロジェクトを推進させているため。</td>
                             </tr>
                         </table>
