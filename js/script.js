@@ -398,4 +398,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* =========================================
+       9. Achievements Slider (Card Scroll)
+       ========================================= */
+    const achSlider = document.getElementById('achievementsSlider');
+    
+    if (achSlider) {
+        const achTrack = achSlider.querySelector('.achievements-track');
+        const achPrev = document.querySelector('.ach-btn.prev');
+        const achNext = document.querySelector('.ach-btn.next');
+        
+        if (achTrack && achPrev && achNext) {
+            // カードの幅 + gap(30px) を取得してスクロール量にする
+            const getScrollAmount = () => {
+                const card = achTrack.querySelector('.achievement-card');
+                return card ? card.offsetWidth + 30 : 430;
+            };
+
+            achNext.addEventListener('click', () => {
+                achTrack.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+            });
+
+            achPrev.addEventListener('click', () => {
+                achTrack.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+            });
+        }
+    }
+
 });
