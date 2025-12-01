@@ -146,11 +146,6 @@ body {
     display: inline-block;
 }
 
-/* ホバー時とアクティブ（現在のページ）時の文字色 */
-.nav-links > li > a:hover {
-    color: var(--text-main);
-}
-
 /* --- 下線アニメーションの設定 --- */
 .nav-links > li > a::after {
     content: '';
@@ -167,11 +162,6 @@ body {
     
     /* アニメーションの速度と動き */
     transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* ホバー時とアクティブ時に線を100%に伸ばす */
-.nav-links > li > a:hover::after {
-    width: 100%;
 }
 
 /* --- Dropdown Menu Styles --- */
@@ -215,11 +205,6 @@ body {
     white-space: nowrap;
     border-radius: 6px;
     transition: background 0.2s, color 0.2s;
-}
-
-.dropdown-menu a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--accent-color); /* ページごとのアクセントカラーで光る */
 }
 
 /* スマホ対応 */
@@ -337,11 +322,6 @@ footer p {
     border-radius: var(--radius);
     transition: transform 0.3s ease;
     border: 1px solid #333;
-}
-
-.bento-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
 }
 
 .bento-card h4 { 
@@ -563,19 +543,6 @@ footer p {
 
 .nav-btn.next .sub-label {
     text-align: right;
-    }
-
-.nav-btn:hover {
-    border-color: var(--accent-color);
-    background: #252525;
-    transform: translateY(-2px);
-}
-
-.nav-btn.prev:hover .arrow { 
-    transform: translateX(-5px); 
-}
-.nav-btn.next:hover .arrow { 
-    transform: translateX(5px); 
 }
 
 @media (max-width: 768px) {
@@ -699,14 +666,6 @@ footer p {
     transform: translateY(0);
 }
 
-/* ホバー時の動き */
-.back-to-top:hover {
-    background-color: var(--accent-color); /* 背景をアクセントカラーで塗りつぶす */
-    color: var(--bg-color); /* 矢印を背景色（黒）に反転 */
-    transform: translateY(-5px); /* 少し浮き上がる */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
 /* スマホでの位置調整（少し内側に） */
 @media (max-width: 600px) {
     .back-to-top {
@@ -727,11 +686,6 @@ footer p {
     height: 24px;
     display: block; /* 隙間を消す */
     transition: transform 0.3s ease;
-}
-
-/* ホバー時に矢印が少し上に動くアニメーション */
-.back-to-top:hover svg {
-    transform: translateY(-3px);
 }
 
 /* =========================================
@@ -774,10 +728,6 @@ footer p {
 /* Webkitブラウザ用（▼消し） */
 .accordion-header::-webkit-details-marker {
     display: none;
-}
-
-.accordion-header:hover {
-    background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* 右側のアイコン（＋/－） */
@@ -1198,9 +1148,6 @@ footer p {
     background-color: #555; /* 目立ちすぎないようグレーに */
     border-radius: 4px;
 }
-.scroll-content::-webkit-scrollbar-thumb:hover {
-    background-color: var(--accent-color); /* ホバー時だけライム色 */
-}
 
 .scroll-content .subheading{
     display: inline-block;
@@ -1362,10 +1309,6 @@ footer p {
     transition: border-color 0.3s ease;
 }
 
-.gallery-item:hover {
-    border-color: var(--accent-color); /* ホバー時にテーマカラーで光る */
-}
-
 /* 画像コンテナ（アスペクト比を維持しつつ枠に収める） */
 .image-container {
     width: 100%;
@@ -1501,9 +1444,7 @@ footer p {
     transition: opacity 0.3s;
 }
 
-.lock-content button:hover {
-    opacity: 0.8;
-}
+
 
 .error-msg {
     color: #ff4d4d !important; /* 赤文字 */
@@ -1538,13 +1479,7 @@ footer p {
     pointer-events: none;
 }
 
-/* ホバー時にアイコンを表示 */
-.image-container.js-zoomable:hover .zoom-hint {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-/* ▼▼▼ ここから追加：スマホ用の調整 ▼▼▼ */
+/* スマホ用の調整 */
 @media (max-width: 768px) {
     /* スマホでは「拡大アイコン」を常時表示する */
     .image-container.js-zoomable .zoom-hint {
@@ -1572,9 +1507,8 @@ footer p {
     .image-container.js-zoomable:hover .zoom-hint {
     opacity: 0;
     transform: translate(0%, 0%) scale(1);
+    }
 }
-}
-/* ▲▲▲ 追加ここまで ▲▲▲ */
 
 /* --- ライトボックス（モーダル）本体 --- */
 .lightbox {
@@ -1646,11 +1580,6 @@ footer p {
     transition: background 0.3s ease;
 }
 
-/* ホバー時は少し濃くする（または明るくする） */
-.lightbox-close:hover {
-    background: rgba(0, 0, 0, 0.8); /* より濃い黒にして強調 */
-}
-
 /* =========================================
    Dropdown Menu Links (with Arrow Animation)
    ========================================= */
@@ -1703,17 +1632,6 @@ footer p {
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s;
 }
 
-/* --- ホバー時の挙動 --- */
-.dropdown-menu a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff; /* リンク文字を白く */
-}
-
-.dropdown-menu a:hover::after {
-    color: var(--accent-color); /* 矢印をテーマカラー（ライム/ピンク/青）に */
-    transform: translateX(5px); /* 右に少しスライド */
-}
-
 /* =========================================
    PDF Link Grid (Thumbnail Style)
    ========================================= */
@@ -1737,11 +1655,6 @@ footer p {
     border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s, border-color 0.3s;
-}
-
-.pdf-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
 }
 
 /* サムネイルエリア */
@@ -1778,10 +1691,6 @@ footer p {
     transition: opacity 0.3s;
 }
 
-.pdf-card:hover .pdf-overlay {
-    opacity: 1;
-}
-
 .view-btn {
     background: var(--accent-color);
     color: #000;
@@ -1791,10 +1700,6 @@ footer p {
     font-size: 0.9rem;
     transform: translateY(10px);
     transition: transform 0.3s;
-}
-
-.pdf-card:hover .view-btn {
-    transform: translateY(0);
 }
 
 /* ファイル名エリア */
@@ -1825,10 +1730,6 @@ footer p {
     color: #ccc;
     line-height: 1.4;
     word-break: break-all; /* 長いファイル名でのレイアウト崩れ防止 */
-}
-
-.pdf-card:hover .pdf-name {
-    color: var(--accent-color); /* ホバー時にファイル名も光らせる */
 }
 
 /* =========================================
@@ -1877,12 +1778,6 @@ footer p {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.ach-btn:hover {
-    background: var(--accent-color);
-    color: #000;
-    border-color: var(--accent-color);
 }
 
 /* --- スライダー本体 --- */
@@ -1937,12 +1832,6 @@ footer p {
     /* 左側に太いアクセントライン（変数を参照） */
     border-left: 6px solid var(--accent-color);
 }
-
-/* .achievement-card:hover {
-    transform: translateY(-5px);
-    border-color: #555;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-} */
 
 /* --- Header --- */
 .card-header {
@@ -2141,12 +2030,6 @@ footer p {
     white-space: nowrap; /* ボタン内の改行禁止 */
 }
 
-.source-btn:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    transform: translateY(-1px);
-}
-
 .source-btn svg { width: 10px; height: 10px; display: block; }
 
 /* スマホ対応 */
@@ -2253,12 +2136,6 @@ footer p {
     
     /* 影をつけて浮き上がらせる */
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
-
-.slider-arrow:hover {
-    background: var(--accent-color);
-    color: #000;
-    border-color: var(--accent-color);
 }
 
 /* ▼▼ 位置調整：ボタン幅(44px)の半分だけ外に出す ▼▼ */
@@ -2410,13 +2287,6 @@ footer p {
     100% { background-position: 0 0, 100% 0; }
 }
 
-/* ホバー時の挙動 */
-.btn-read-more:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
-    color: #fff;
-}
-
 /* --- テキストの表示切り替え --- */
 .btn-text-close { display: none; }
 
@@ -2513,18 +2383,10 @@ footer p {
     gap: 6px;
 }
 
-.internal-close-btn:hover {
-    color: var(--accent-color); /* ホバー時はテーマカラーに */
-}
-
 /* 矢印アイコン */
 .icon-up {
     font-size: 1.1rem;
     transition: transform 0.3s;
-}
-
-.internal-close-btn:hover .icon-up {
-    transform: translateY(-3px); /* ふわっと上がる演出 */
 }
 
 /* =========================================
@@ -2588,12 +2450,6 @@ footer p {
     opacity: 0.8;
 }
 
-/* ホバー時のデザイン */
-.toc-list a:hover {
-    color: var(--text-main);
-    transform: translateY(-2px);
-}
-
 /* --- スマホ対応（縦積みリスト） --- */
 @media (max-width: 600px) {
     .toc-section {
@@ -2645,9 +2501,8 @@ footer p {
 }
 
 /* =========================================
-   【重要】スマホでのホバー無効化対応
-   以下のスタイルを @media (hover: hover) { ... } で囲むことで、
-   マウス操作ができる端末でのみホバー効果が発動するようにします。
+   【重要】PCのみホバー有効化（完全版）
+   ※スマホ（タッチデバイス）では以下のスタイルは無視されます
    ========================================= */
 
 @media (hover: hover) {
@@ -2715,6 +2570,11 @@ footer p {
         color: var(--bg-color);
         transform: translateY(-1px);
     }
+    
+    .contact-btn-large:hover {
+        transform: scale(1.05);
+        background: #fff;
+    }
 
     /* --- カード・リスト類 --- */
     .bento-card:hover {
@@ -2727,11 +2587,11 @@ footer p {
         transform: translateY(-2px);
     }
     
-    .achievement-card:hover {
+    /* .achievement-card:hover {
         transform: translateY(-5px);
         border-color: #555;
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
+    } */
     
     .pdf-card:hover {
         transform: translateY(-5px);
@@ -2754,12 +2614,22 @@ footer p {
         border-color: var(--accent-color);
     }
     
+    .image-container.js-zoomable:hover .zoom-hint {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* --- スライダー・アコーディオン --- */
     .slider-arrow:hover {
         background: var(--accent-color);
         color: #000;
         border-color: var(--accent-color);
     }
     
+    .achievements-grid::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-color);
+    }
+
     .ach-btn:hover {
         background: var(--accent-color);
         color: #000;
@@ -2770,8 +2640,18 @@ footer p {
         background-color: rgba(255, 255, 255, 0.05);
     }
     
-    .contact-btn-large:hover {
-        transform: scale(1.05);
-        background: #fff;
+    .details-summary:hover .btn-read-more {
+        border-color: var(--accent-color);
+        color: var(--text-main);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .lock-content button:hover {
+    opacity: 0.8;
+    }
+
+    .scroll-content::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-color); /* ホバー時だけライム色 */
     }
 }
