@@ -135,7 +135,7 @@ body {
 /* スマホ対応 */
 @media (max-width: 600px) {
     .logo { 
-        font-size: 1.2rem;
+        font-size: 4.5vw;
      }
 }
 
@@ -159,6 +159,14 @@ body {
     padding: 10px 0;
     text-decoration: none;
     display: inline-block;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .nav-links > li > a {
+    padding: 2px 0;
+    font-size: 4.5vw;
+    }
 }
 
 /* --- 下線アニメーションの設定 --- */
@@ -507,13 +515,13 @@ footer p {
 @media (max-width: 600px) {
     .section-title-layer { 
         /* ▼▼ ご要望：SPでも日本語を大きく維持 ▼▼ */
-        font-size: 2.5rem; 
-        margin-bottom: 50px; 
+        font-size: 10vw; 
+        margin-bottom: 40px; 
     }
     
     .section-title-layer::before { 
         /* ▼▼ ご要望：SPでも英語を巨大に（5rem） ▼▼ */
-        font-size: 4rem; 
+        font-size: 15vw ;
         
         /* ▼▼ 配置調整：日本語に少し重なる位置へ ▼▼ */
         bottom: 25px;
