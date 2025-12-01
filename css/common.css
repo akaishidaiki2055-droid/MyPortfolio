@@ -124,6 +124,13 @@ body {
     letter-spacing: -0.05em;
 }
 
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .logo { 
+        font-size: 1.2rem;
+     }
+}
+
 /* =========================================
    Navigation Links Hover Effect
    ========================================= */
@@ -162,6 +169,36 @@ body {
     
     /* アニメーションの速度と動き */
     transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* リンク内のレイアウト調整 */
+.work-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* 文字とアイコンの間隔 */
+}
+
+/* 矢印アイコンの設定 */
+.dropdown-arrow {
+    width: 10px;
+    height: 12px;
+    transition: transform 0.3s ease; /* 回転アニメーション */
+    color: inherit; /* 親の文字色を継承 */
+    opacity: 0.6;   /* 少し控えめに */
+}
+
+/* --- 開いている時の状態 --- */
+
+/* PC: ホバー時 */
+.has-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+
+/* スマホ: クラス付与時 */
+.has-dropdown.menu-open .dropdown-arrow {
+    transform: rotate(180deg);
+    opacity: 1;
 }
 
 /* --- Dropdown Menu Styles --- */
@@ -411,6 +448,57 @@ footer p {
     border-left: 5px solid var(--accent-color); 
     padding-left: 20px; 
     text-align: left;
+}
+
+/* =========================================
+   Section Title Layered (Plan B: Solid)
+   ========================================= */
+
+.section-title-layer {
+    position: relative;
+    z-index: 1;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 60px;
+    color: var(--text-main);
+    border-left: 4px solid var(--accent-color); /* 左にアクセントライン */
+    padding-left: 20px;
+}
+
+.section-title-layer::before {
+    content: attr(data-en);
+    position: absolute;
+    z-index: -1;
+    
+    /* 位置調整（日本語の後ろに重ねる） */
+    bottom: 36px;
+    left: -2vw;
+    
+    font-family: var(--font-main);
+    font-size: 5.0rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+
+    /* ▼▼ デザインの肝：中抜き文字にする ▼▼ */
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent-color); /* 縁取りをテーマカラーに */
+    opacity: 0.2; /* 薄くする */
+    word-break: keep-all;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    /* .section-title-layer { 
+        font-size: 1.5rem; 
+        margin-bottom: 40px; 
+    } */
+
+    .section-title-layer::before { 
+        font-size: 4.5rem; 
+        bottom: 40px;
+        left: -8vw;
+    }
 }
 
 .presentation-section h3 { 
@@ -2652,5 +2740,10 @@ footer p {
 
     .scroll-content::-webkit-scrollbar-thumb:hover {
     background-color: var(--accent-color); /* ホバー時だけライム色 */
+    }
+
+    /* --- Dropdown Arrow Hover --- */
+    .has-dropdown:hover .dropdown-arrow {
+        color: var(--accent-color);
     }
 }
