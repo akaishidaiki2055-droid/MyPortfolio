@@ -319,3 +319,26 @@
     background: var(--text-main);
     color: var(--bg-color);
 }
+
+@media (hover: hover) {
+    
+    .work-card:hover .card-image {
+        transform: scale(1.02);
+        border-color: var(--accent-color);
+        filter: brightness(1.1);
+    }
+
+    .work-card:hover .arrow-icon {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .about-teaser:hover {
+        border-color: var(--accent-color);
+    }
+
+    .about-teaser:hover::before {
+        transform: scale(1.05);
+    }
+    
+}

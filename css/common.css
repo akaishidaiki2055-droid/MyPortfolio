@@ -2643,3 +2643,135 @@ footer p {
         background-color: rgba(255, 255, 255, 0.05);
     }
 }
+
+/* =========================================
+   【重要】スマホでのホバー無効化対応
+   以下のスタイルを @media (hover: hover) { ... } で囲むことで、
+   マウス操作ができる端末でのみホバー効果が発動するようにします。
+   ========================================= */
+
+@media (hover: hover) {
+
+    /* --- ナビゲーション --- */
+    .nav-links a:hover, 
+    .nav-links a.active {
+        color: var(--text-main);
+    }
+
+    .nav-links > li > a:hover::after {
+        width: 100%;
+    }
+    
+    .dropdown-menu a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+
+    .dropdown-menu a:hover::after {
+        color: var(--accent-color);
+        transform: translateX(5px);
+    }
+
+    /* --- ボタン類 --- */
+    .nav-btn:hover {
+        border-color: var(--accent-color);
+        background: #252525;
+        transform: translateY(-2px);
+    }
+    
+    .nav-btn.prev:hover .arrow { transform: translateX(-5px); }
+    .nav-btn.next:hover .arrow { transform: translateX(5px); }
+
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    
+    .back-to-top:hover svg {
+        transform: translateY(-3px);
+    }
+
+    .lightbox-close:hover {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-read-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+        color: #fff;
+    }
+    
+    .internal-close-btn:hover {
+        color: var(--accent-color);
+    }
+    .internal-close-btn:hover .icon-up {
+        transform: translateY(-3px);
+    }
+    
+    .source-btn:hover {
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+        transform: translateY(-1px);
+    }
+
+    /* --- カード・リスト類 --- */
+    .bento-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color);
+    }
+    
+    .toc-list a:hover {
+        color: var(--text-main);
+        transform: translateY(-2px);
+    }
+    
+    .achievement-card:hover {
+        transform: translateY(-5px);
+        border-color: #555;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .pdf-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color);
+    }
+    
+    .pdf-card:hover .pdf-overlay {
+        opacity: 1;
+    }
+    
+    .pdf-card:hover .view-btn {
+        transform: translateY(0);
+    }
+    
+    .pdf-card:hover .pdf-name {
+        color: var(--accent-color);
+    }
+    
+    .gallery-item:hover {
+        border-color: var(--accent-color);
+    }
+    
+    .slider-arrow:hover {
+        background: var(--accent-color);
+        color: #000;
+        border-color: var(--accent-color);
+    }
+    
+    .ach-btn:hover {
+        background: var(--accent-color);
+        color: #000;
+        border-color: var(--accent-color);
+    }
+    
+    .accordion-header:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .contact-btn-large:hover {
+        transform: scale(1.05);
+        background: #fff;
+    }
+}
