@@ -135,10 +135,10 @@ body {
     align-items: center;
 }
 
-/* ナビゲーション直下のリンク（Work, About） */
+/* ナビゲーション直下のリンク（Work, About）の通常状態 */
 .nav-links > li > a {
     font-weight: bold;
-    color: var(--text-muted);
+    color: var(--text-muted); /* 通常カラーグレー */
     transition: color 0.3s;
     position: relative; /* 線を配置する基準 */
     padding: 10px 0;
@@ -2508,8 +2508,7 @@ footer p {
 @media (hover: hover) {
 
     /* --- ナビゲーション --- */
-    .nav-links a:hover, 
-    .nav-links a.active {
+    .nav-links > li > a:hover {
         color: var(--text-main);
     }
 
