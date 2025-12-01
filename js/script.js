@@ -26,38 +26,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* =========================================
-       2. Scroll Animations (スクロールでふわっと表示)
+       2. Scroll Animations (Universal Fade-in)
        ========================================= */
-    // 監視対象：.process-step クラスを持つ要素
-    const animatedElements = document.querySelectorAll('.process-step');
+    // 監視対象：.js-fade クラスを持つすべての要素
+    // ※以前の .process-step も対象に含めたい場合は、HTML側でクラスを追加するか、
+    //   ここで document.querySelectorAll('.js-fade, .process-step') と書きます。
+    //   今回は「.js-fade」に統一する運用を推奨します。
+    const fadeElements = document.querySelectorAll('.js-fade');
 
-    if (animatedElements.length > 0) {
+    if (fadeElements.length > 0) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px', // 画面の下端から50px入ったら発火（少し早めに見せる）
+            threshold: 0.1 // 要素の10%が見えたら発火
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // 一度表示されたら監視を解除（パフォーマンス対策）
+                    entry.target.classList.add('is-visible');
+                    // 一度表示されたら監視を解除（パフォーマンス向上＆再アニメーション防止）
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 }); // 要素が10%見えたら発火
+        }, observerOptions);
 
-        animatedElements.forEach((step) => {
-            observer.observe(step);
+        fadeElements.forEach((el) => {
+            observer.observe(el);
         });
     }
-
-    const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.process-step').forEach((step) => {
-            observer.observe(step);
-        });
 
     /* =========================================
        3. Password Protection (パスワードロック & リダイレクト)

@@ -21,12 +21,20 @@
 }
 
 /* --- Base --- */
+/* htmlとbodyの両方に設定するのが鉄則 */
+html, body {
+    width: 100%;      /* 100vwではなく100%にする */
+    max-width: 100%;  /* これ以上広がらないようにする */
+    overflow-x: hidden; /* 横スクロールを禁止 */
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: var(--font-main);
     line-height: 1.6;
-    overflow-x: hidden;
+    /* overflow-x: hidden; <-- ここだけでなくhtmlにも必要 */
+    position: relative; /* 子要素の基準点にする */
 }
 
 a { 
@@ -444,6 +452,7 @@ footer p {
 
 .section-title { 
     font-size: 2.5rem; 
+    line-height: 1.3;
     margin-bottom: 60px; 
     border-left: 5px solid var(--accent-color); 
     padding-left: 20px; 
@@ -451,55 +460,70 @@ footer p {
 }
 
 /* =========================================
-   Section Title Layered (Plan B: Solid)
+   Section Title Layered ここから
    ========================================= */
 
 .section-title-layer {
     position: relative;
     z-index: 1;
     font-size: 2.5rem;
+    line-height: 1.3;
     font-weight: 800;
     margin-bottom: 60px;
     color: var(--text-main);
-    border-left: 4px solid var(--accent-color); /* 左にアクセントライン */
+    border-left: 5px solid var(--accent-color);
     padding-left: 20px;
+    
+    /* ▼▼ 修正：枠による切り取りを解除 ▼▼ */
+    overflow: visible; 
+    /* ▲▲ ここがポイント ▲▲ */
 }
 
 .section-title-layer::before {
     content: attr(data-en);
     position: absolute;
-    z-index: -1;
+    z-index: -1; /* 日本語の後ろに */
     
-    /* 位置調整（日本語の後ろに重ねる） */
-    bottom: 36px;
+    /* ▼▼ 修正：PCでの配置とサイズ ▼▼ */
+    bottom: 25px;
     left: -2vw;
     
     font-family: var(--font-main);
-    font-size: 5.0rem;
+    font-size: 5rem; /* PCでも大きく */
     font-weight: 900;
     text-transform: uppercase;
+    
+    /* 改行させずに突き抜けさせる */
+    /* white-space: nowrap; */
     line-height: 1;
-
-    /* ▼▼ デザインの肝：中抜き文字にする ▼▼ */
-    color: transparent;
-    -webkit-text-stroke: 1px var(--accent-color); /* 縁取りをテーマカラーに */
-    opacity: 0.2; /* 薄くする */
-    word-break: keep-all;
+    
+    /* デザイン（薄い色） */
+    color: var(--accent-color);
+    opacity: 0.1;
+    letter-spacing: 0.05em;
 }
 
 /* スマホ対応 */
 @media (max-width: 600px) {
-    /* .section-title-layer { 
-        font-size: 1.5rem; 
-        margin-bottom: 40px; 
-    } */
-
+    .section-title-layer { 
+        /* ▼▼ ご要望：SPでも日本語を大きく維持 ▼▼ */
+        font-size: 2.5rem; 
+        margin-bottom: 50px; 
+    }
+    
     .section-title-layer::before { 
-        font-size: 4.5rem; 
-        bottom: 40px;
-        left: -8vw;
+        /* ▼▼ ご要望：SPでも英語を巨大に（5rem） ▼▼ */
+        font-size: 4rem; 
+        
+        /* ▼▼ 配置調整：日本語に少し重なる位置へ ▼▼ */
+        bottom: 25px;
+        left: -4vw; /* 左端から少しはみ出させる */
     }
 }
+
+/* =========================================
+   ▲▲ Section Title Layered ここまで ▲▲
+   ========================================= */
 
 .presentation-section h3 { 
     background-color: var(--bg-faint);
@@ -2139,6 +2163,7 @@ footer p {
         padding-left: 20px; /* スマホ用の余白 */
         padding-right: 20px;
         align-items: flex-start;
+        gap: 20px;
     }
 
     .card-header{
@@ -2387,15 +2412,23 @@ footer p {
     animation: none;
 }
 
+.btn-text-open{
+    width: 170px;
+    text-align: center;
+    padding-left: 13%;
+}
+
 .details-wrapper[open] .btn-text-open { 
     display: none; 
     width: 170px;
     text-align: center;
+    padding-left: 13%;
 }
 .details-wrapper[open] .btn-text-close { 
     display: inline; 
     width: 170px;
     text-align: center;
+    padding-left: 13%;
 }
 
 /* --- アイコン --- */
@@ -2587,6 +2620,30 @@ footer p {
         background-color: rgba(255, 255, 255, 0.05);
     }
 }
+
+/* =========================================
+   Scroll Fade Animation (Universal)
+   ========================================= */
+
+/* 初期状態：隠しておく */
+.js-fade {
+    opacity: 0;
+    transform: translateY(30px); /* 少し下に配置 */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform; /* パフォーマンス最適化 */
+}
+
+/* 表示状態：元の位置に戻して不透明に */
+.js-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* (オプション) 遅延表示用クラス */
+/* 順番に表示させたい場合などに使います */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
 
 /* =========================================
    【重要】PCのみホバー有効化（完全版）
