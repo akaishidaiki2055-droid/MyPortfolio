@@ -73,8 +73,6 @@
     transition: transform 0.3s ease;
 }
 
-.persona-card:hover { transform: translateY(-5px); }
-
 .persona-icon {
     /* font-size: 3rem;  <-- これは削除するか上書き */
     width: 80px;
@@ -180,3 +178,13 @@
     margin: 0 auto;
 }
 
+/* =========================================
+   【重要】PCのみホバー有効化（完全版）
+   ※スマホ（タッチデバイス）では以下のスタイルは無視されます
+   ========================================= */
+
+@media (hover: hover) {
+
+    .persona-card:hover { transform: translateY(-5px); }
+
+}

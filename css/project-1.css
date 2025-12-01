@@ -40,11 +40,6 @@
     transition: transform 0.3s;
 }
 
-.matrix-cell:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-3px);
-}
-
 /* 軸の十字ライン */
 .matrix-grid::before {
     content: '';
@@ -164,4 +159,19 @@
     .matrix-grid, .solution-cards { grid-template-columns: 1fr; }
     .matrix-grid::before, .matrix-grid::after { display: none; }
     .quadrant-matrix { padding: 40px 20px; }
+}
+
+/* =========================================
+   【重要】PCのみホバー有効化（完全版）
+   ※スマホ（タッチデバイス）では以下のスタイルは無視されます
+   ========================================= */
+
+@media (hover: hover) {
+
+    /* --- 4 Quadrants Matrix (4象限図) --- */
+    .matrix-cell:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    }
+
 }
